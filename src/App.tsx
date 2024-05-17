@@ -1,11 +1,11 @@
-import { Horse, Heart, Cube } from "@phosphor-icons/react";
+import { Text } from './components'
 
 function App() {
   return (
     <main>
-      <Horse />
-      <Heart color="#AE2983" weight="fill" size={32} />
-      <Cube color="teal" weight="duotone" />
+      <Text type='regular' size='xl' toCenter={true} color='#ff2341'>
+        Hello World!
+      </Text>
     </main>
   )
 }
