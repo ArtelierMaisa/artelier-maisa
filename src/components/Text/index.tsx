@@ -1,12 +1,21 @@
-import { TextProps, sizes, weights } from '../../@types'
+import { TextProps } from '../../@types';
+import { textSizes, textWeights } from '../../constants';
 
 export function Text(props: TextProps) {
-  const { type, color, size, toCenter } = props
-  return <p className={
-    `${weights[type]} ${sizes[size]} ${toCenter ? 'text-center' : '#252527'}`
-  }
-    style={{ color }}
-  >
-    {props.children}
-  </p>
+  const {
+    children,
+    type = 'regular',
+    color = '#252527',
+    size = 'base',
+    toCenter = false,
+  } = props;
+
+  return (
+    <p
+      className={`${textWeights[type]} ${textSizes[size]} ${toCenter ? 'text-center' : ''}`}
+      style={{ color }}
+    >
+      {children}
+    </p>
+  );
 }
