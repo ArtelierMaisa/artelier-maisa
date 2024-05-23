@@ -1,30 +1,43 @@
-import { CaretDown, CaretLeft, CaretRight, Copyright, FacebookLogo, Heart, InstagramLogo, MagnifyingGlass, SmileySad, WhatsappLogo, X } from "@phosphor-icons/react"
-import { EnvelopeSimple } from "@phosphor-icons/react/dist/ssr"
-import React from "react"
-import { IconProps } from "../../@types"
-import { sizes } from "../../constants/components/Icon"
+import {
+  CaretDown,
+  CaretLeft,
+  CaretRight,
+  Copyright,
+  EnvelopeSimple,
+  FacebookLogo,
+  Heart,
+  InstagramLogo,
+  MagnifyingGlass,
+  SmileySad,
+  WhatsappLogo,
+  X,
+} from '@phosphor-icons/react';
 
-export function Icon(props: IconProps){
-    const {
-        color = "text",
-        size = "xx-small", 
-        variant
-    } = props 
+import { IconProps } from '../../@types';
+import { iconColors, iconSizes } from '../../constants/components';
 
-    const icons: Record < IconProps["variant"], JSX.Element > = {
-        "caret-left": <CaretLeft />, 
-        "caret-right": <CaretRight  />,
-        "caret-down": <CaretDown />,
-        "magnifying-glass": <MagnifyingGlass />,
-        "heart": <Heart />,
-        "facebook-logo": <FacebookLogo />,
-        "instagram-logo": <InstagramLogo />,
-        "whatsapp-logo": <WhatsappLogo />,
-        "envelope-simple": <EnvelopeSimple />,
-        "x": <X />,
-        "smiley-sad": <SmileySad />,
-        "copyright": <Copyright />
-    }
+export function Icon(props: IconProps) {
+  const { variant, color = 'background-color', size = 'x-small' } = props;
 
-    return React.cloneElement(icons[variant], { className: `${sizes[size]} text-${color}` }); 
+  const iconCommonProps = {
+    color: iconColors[color],
+    size: iconSizes[size],
+  };
+
+  const icons: Record<IconProps['variant'], JSX.Element> = {
+    'caret-left': <CaretLeft {...iconCommonProps} />,
+    'caret-right': <CaretRight {...iconCommonProps} />,
+    'caret-down': <CaretDown {...iconCommonProps} />,
+    'magnifying-glass': <MagnifyingGlass {...iconCommonProps} />,
+    heart: <Heart {...iconCommonProps} weight='fill' />,
+    'facebook-logo': <FacebookLogo {...iconCommonProps} />,
+    'instagram-logo': <InstagramLogo {...iconCommonProps} />,
+    'whatsapp-logo': <WhatsappLogo {...iconCommonProps} />,
+    'envelope-simple': <EnvelopeSimple {...iconCommonProps} />,
+    x: <X {...iconCommonProps} />,
+    'smiley-sad': <SmileySad {...iconCommonProps} />,
+    copyright: <Copyright {...iconCommonProps} />,
+  };
+
+  return icons[variant];
 }

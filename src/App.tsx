@@ -1,10 +1,13 @@
+import './styles/global.scss';
+
 import { Icon, Text } from './components';
 
 function App() {
   return (
     <main>
       <Text>Hello World!</Text>
-      <Icon variant='caret-left' color='alert' size='large'/>
+
+      <Icon variant='caret-left' />
     </main>
   );
 }

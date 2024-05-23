@@ -5,15 +5,14 @@ export function Text(props: TextProps) {
   const {
     children,
     type = 'regular',
-    color = '#252527',
+    color = 'text',
     size = 'base',
     toCenter = false,
   } = props;
 
   return (
     <p
-      className={`${textWeights[type]} ${textSizes[size]} ${toCenter ? 'text-center' : ''}`}
-      style={{ color }}
+      className={`text-${color} ${textWeights[type]} ${textSizes[size]} text-${toCenter ? 'center' : 'left'}`}
     >
       {children}
     </p>
