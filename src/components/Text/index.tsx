@@ -1,5 +1,5 @@
 import { TextProps } from '../../@types';
-import { textSizes, textWeights } from '../../constants';
+import { textColors, textSizes, textWeights } from '../../constants';
 
 export function Text(props: TextProps) {
   const {
@@ -8,11 +8,15 @@ export function Text(props: TextProps) {
     color = 'text',
     size = 'base',
     toCenter = false,
+    isInline = false,
   } = props;
+
+  const textAlign = `text-${toCenter ? 'center' : 'left'}`;
+  const display = `${isInline ? 'inline' : 'block'}`;
 
   return (
     <p
-      className={`text-${color} ${textWeights[type]} ${textSizes[size]} text-${toCenter ? 'center' : 'left'}`}
+      className={`${display} ${textColors[color]} ${textWeights[type]} ${textSizes[size]} ${textAlign}`}
     >
       {children}
     </p>

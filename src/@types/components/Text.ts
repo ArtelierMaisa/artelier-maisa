@@ -7,4 +7,5 @@ export interface TextProps {
   color?: Colors;
   size?: keyof typeof textSizes;
   toCenter?: boolean;
+  isInline?: boolean;
 }
