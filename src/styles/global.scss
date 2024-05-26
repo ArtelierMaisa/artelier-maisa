@@ -26,7 +26,10 @@
   --email: '#0064B0';
 }
 
+html,
 body {
+  width: 100%;
+  
   background: var(--background-color);
   color: var(--text);
 }
