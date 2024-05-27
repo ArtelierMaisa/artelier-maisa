@@ -20,4 +20,16 @@ export const flowbiteTheme: CustomFlowbiteTheme = {
       wrapper: 'absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-4',
     },
   },
+
+  navbar: {
+    root: {
+      base: 'bg-primary px-5 dark:bg-primary',
+      inner: {
+        base: 'mx-auto flex flex-wrap items-center',
+      },
+    },
+    brand: {
+      base: 'flex items-center mr-4',
+    },
+  },
 };

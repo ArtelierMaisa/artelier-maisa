@@ -17,6 +17,23 @@ export const textColors: Record<Required<TextProps>['color'], string> = {
   email: 'text-email',
 };
 
+export const textHoverColors: Record<Required<TextProps>['color'], string> = {
+  white: 'hover:text-white',
+  white90: 'hover:text-white90',
+  white60: 'hover:text-white60',
+  text: 'hover:text-text',
+  text85: 'hover:text-text85',
+  text50: 'hover:text-text50',
+  'background-color': 'hover:text-background-color',
+  primary: 'hover:text-primary',
+  primary60: 'hover:text-primary60',
+  alert: 'hover:text-alert',
+  warning: 'hover:text-warning',
+  whatsapp: 'hover:text-whatsapp',
+  facebook: 'hover:text-facebook',
+  email: 'hover:text-email',
+};
+
 export const textWeights = {
   regular: 'font-regular',
   medium: 'font-medium',

@@ -8,4 +8,7 @@ export interface TextProps {
   size?: keyof typeof textSizes;
   toCenter?: boolean;
   isInline?: boolean;
+  hoverColor?: Colors;
+  isCursorPointer?: boolean;
+  onClick?(): void;
 }

@@ -2,12 +2,14 @@ import './styles/global.scss';
 
 import { Flowbite } from 'flowbite-react';
 
-import { Carousel } from './components';
+import { Carousel, Header } from './components';
 import { flowbiteTheme } from './styles';
 
 function App() {
   return (
     <Flowbite theme={{ theme: flowbiteTheme }}>
+      <Header linkActive={'products'} />
+
       <Carousel
         type='banner'
         images={[
