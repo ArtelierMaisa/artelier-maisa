@@ -20,4 +20,6 @@ export interface IconProps {
   variant: IconVariant;
   color?: Colors;
   size?: IconSize;
+  isCursorPointer?: boolean;
+  onClick?(): void;
 }

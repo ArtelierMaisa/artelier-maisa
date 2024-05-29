@@ -10,5 +10,6 @@ export interface TextProps {
   isInline?: boolean;
   hoverColor?: Colors;
   isCursorPointer?: boolean;
+  isUnderlined?: boolean;
   onClick?(): void;
 }

@@ -16,16 +16,18 @@ export function Text(props: TextProps) {
     isInline = false,
     hoverColor = color,
     isCursorPointer = false,
+    isUnderlined = false,
     onClick,
   } = props;
 
   const textAlign = `text-${toCenter ? 'center' : 'left'}`;
-  const display = `${isInline ? 'inline' : 'block'}`;
+  const display = isInline ? 'inline' : 'block';
   const cursor = `cursor-${isCursorPointer ? 'pointer' : 'default'}`;
+  const underline = isUnderlined ? 'underline' : '';
 
   return (
     <p
-      className={`${display} ${textColors[color]} ${textWeights[type]} ${textSizes[size]} ${textAlign} ${textHoverColors[hoverColor]} ${cursor}`}
+      className={`${display} ${textColors[color]} ${textWeights[type]} ${textSizes[size]} ${textAlign} ${textHoverColors[hoverColor]} ${cursor} ${underline}`}
       onClick={onClick}
     >
       {children}

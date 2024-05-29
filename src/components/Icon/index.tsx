@@ -17,11 +17,19 @@ import { IconProps } from '../../@types';
 import { iconColors, iconSizes } from '../../constants/components';
 
 export function Icon(props: IconProps) {
-  const { variant, color = 'background-color', size = 'x-small' } = props;
+  const {
+    variant,
+    color = 'background-color',
+    size = 'x-small',
+    isCursorPointer = false,
+    onClick,
+  } = props;
 
   const iconCommonProps = {
     color: iconColors[color],
     size: iconSizes[size],
+    className: isCursorPointer ? 'cursor-pointer' : 'cursor-default',
+    onClick,
   };
 
   const icons: Record<IconProps['variant'], JSX.Element> = {

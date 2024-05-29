@@ -32,4 +32,17 @@ export const flowbiteTheme: CustomFlowbiteTheme = {
       base: 'flex items-center mr-4',
     },
   },
+
+  footer: {
+    root: {
+      base: 'w-full rounded-none bg-background-color dark:bg-background-color md:flex md:items-center md:justify-between',
+      container: 'w-full h-16 p-6',
+      bgDark: 'bg-background-color',
+    },
+    copyright: {
+      base: 'font-bold text-base text-text dark:text-text sm:text-center mr-1',
+      href: 'ml-1',
+      span: 'ml-1',
+    },
+  },
 };
