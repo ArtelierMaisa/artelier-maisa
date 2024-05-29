@@ -1,15 +1,9 @@
 import { Navbar } from 'flowbite-react';
 import { useState } from 'react';
 
-import { TextProps } from '../../@types';
+import { HeaderLinkActiveType, HeaderProps, TextProps } from '../../@types';
 import { PRIMARY_LOGO } from '../../config';
 import { Text } from '../Text';
-
-export type HeaderLinkActiveType = 'products' | 'about' | 'events' | null;
-
-export interface HeaderProps {
-  linkActive: HeaderLinkActiveType;
-}
 
 export function Header(props: HeaderProps) {
   const { linkActive } = props;

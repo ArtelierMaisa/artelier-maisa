@@ -28,6 +28,10 @@ export default {
         facebook: '#3B5998',
         email: '#0064B0',
       },
+      boxShadow: {
+        default:
+          '0px 0px 32px -16px rgba(37, 37, 39, 0.5), 0px 0px 32px -16px rgba(37, 37, 39, 0.5)',
+      },
     },
   },
   plugins: [flowbite.plugin()],
