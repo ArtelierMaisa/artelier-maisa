@@ -28,7 +28,7 @@ export function Icon(props: IconProps) {
   const iconCommonProps = {
     color: iconColors[color],
     size: iconSizes[size],
-    className: isCursorPointer ? 'cursor-pointer' : 'cursor-default',
+    className: isCursorPointer ? 'cursor-pointer' : '',
     onClick,
   };
 

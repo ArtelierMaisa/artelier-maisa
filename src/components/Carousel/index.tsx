@@ -1,7 +1,7 @@
 import { Carousel as FlowbiteCarousel } from 'flowbite-react';
 
 import { CarouselProps } from '../../@types';
-import { heights } from '../../constants';
+import { carouselHeights } from '../../constants';
 import { CarouselButton } from '../CarouselButton';
 
 export function Carousel(props: CarouselProps) {
@@ -11,7 +11,7 @@ export function Carousel(props: CarouselProps) {
   const hasOneImage = images.length === 1;
 
   return (
-    <div className={`max-w-full ${heights[type]}`}>
+    <div className={`max-w-full ${carouselHeights[type]}`}>
       <FlowbiteCarousel
         slide={isSlide && !isProduct}
         slideInterval={5000}

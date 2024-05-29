@@ -22,7 +22,7 @@ export function Text(props: TextProps) {
 
   const textAlign = `text-${toCenter ? 'center' : 'left'}`;
   const display = isInline ? 'inline' : 'block';
-  const cursor = `cursor-${isCursorPointer ? 'pointer' : 'default'}`;
+  const cursor = isCursorPointer ? 'cursor-pointer' : '';
   const underline = isUnderlined ? 'underline' : '';
 
   return (

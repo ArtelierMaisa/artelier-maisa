@@ -1,5 +1,5 @@
 import { MetricProps } from '../../@types';
-import { metrics } from '../../constants';
+import { metricsVariants } from '../../constants';
 import { Text } from '../Text';
 
 export function Metric(props: MetricProps) {
@@ -10,7 +10,7 @@ export function Metric(props: MetricProps) {
       <div className='flex w-auto h-full items-center shadow-default shadow-text rounded-lg'>
         <div className='w-auto h-auto p-3 bg-primary rounded-tl-lg rounded-bl-lg'>
           <Text type='medium' color='background-color' size='xl' toCenter>
-            {metrics[variant]}
+            {metricsVariants[variant]}
           </Text>
         </div>
 

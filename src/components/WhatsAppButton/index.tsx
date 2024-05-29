@@ -12,7 +12,7 @@ export function WhatsAppButton(props: WhatsAppButtonProps) {
   return (
     <button
       type='button'
-      className='flex flex-row gap-1 w-auto max-w-[32rem] h-16 p-5 bg-whatsapp text-white justify-center items-center rounded-lg hover:opacity-90 transition-colors'
+      className='flex flex-row gap-1 w-auto max-w-[32rem] h-16 p-5 bg-whatsapp text-white justify-center items-center rounded-lg hover:opacity-90 transition-colors duration-300'
       onClick={handleWhatsApp}
     >
       <Text type='medium' color='white' size='xl' isCursorPointer>
