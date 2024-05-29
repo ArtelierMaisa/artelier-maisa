@@ -2,13 +2,13 @@ import './styles/global.scss';
 
 import { Flowbite } from 'flowbite-react';
 
-import { WhatsAppButton } from './components';
+import { GenericButton } from './components';
 import { flowbiteTheme } from './styles';
 
 function App() {
   return (
     <Flowbite theme={{ theme: flowbiteTheme }}>
-      <WhatsAppButton phone='+55 (47) 9 9999-9999' />
+      <GenericButton title='Clique aqui!' />
     </Flowbite>
   );
 }
