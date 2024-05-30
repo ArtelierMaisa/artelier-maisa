@@ -1,4 +1,6 @@
-import { WhatsAppButtonProps } from "../components";
+import { WhatsAppButtonProps } from '../components';
 
-export interface sendMessageProps extends WhatsAppButtonProps {
+export type SendMessageType = 'footer' | 'whatsapp-button';
+export interface SendMessageProps extends Partial<WhatsAppButtonProps> {
+  type?: SendMessageType;
 }

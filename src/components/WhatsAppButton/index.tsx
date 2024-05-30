@@ -1,17 +1,13 @@
 import { WhatsAppButtonProps } from '../../@types';
-import { Icon, Text } from '../';
-import { sendMessage } from '../../utils/whatsapp';
 import { DEFAULT_PHONE } from '../../config';
+import { sendMessage } from '../../utils';
+import { Icon, Text } from '../';
 
 export function WhatsAppButton(props: WhatsAppButtonProps) {
-  const {
-    type = 'whatsapp-button',
-    phone = DEFAULT_PHONE,
-    product
-  } = props;
+  const { product, phone = DEFAULT_PHONE } = props;
 
   function onSendWhatsAppMessage(): void {
-    window.open(sendMessage({ type, phone, product }));
+    window.open(sendMessage({ phone, product }));
   }
 
   return (

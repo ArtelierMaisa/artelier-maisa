@@ -3,6 +3,7 @@ import { Footer as FlowbiteFooter } from 'flowbite-react';
 import packageJson from '../../../package.json';
 import { IconProps } from '../../@types';
 import { DEFAULT_EMAIL } from '../../config';
+import { sendMessage } from '../../utils';
 import { Icon, Text } from '../';
 
 export function Footer() {
@@ -14,8 +15,9 @@ export function Footer() {
     isCursorPointer: true,
   };
 
-  // TODO: Integration with WhatsApp API
-  function handleWhatsApp(): void {}
+  function onSendWhatsAppMessage(): void {
+    window.open(sendMessage({ type: 'footer' }));
+  }
 
   return (
     <FlowbiteFooter container className='border-t border-primary'>
@@ -60,11 +62,10 @@ export function Footer() {
             <Icon variant='instagram-logo' color='text' {...commonIconProps} />
           </a>
 
-          {/* TODO: Add WhatsApp of Maisa */}
           <Icon
             variant='whatsapp-logo'
             color='whatsapp'
-            onClick={handleWhatsApp}
+            onClick={onSendWhatsAppMessage}
             {...commonIconProps}
           />
 
