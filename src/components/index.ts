@@ -5,6 +5,7 @@ export * from './GenericButton';
 export * from './Header';
 export * from './Icon';
 export * from './Metric';
+export * from './SearchInput';
 export * from './Spinner';
 export * from './Text';
 export * from './WhatsAppButton';
