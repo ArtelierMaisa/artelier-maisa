@@ -1,13 +1,5 @@
-import { Footer, Header, WhatsAppButton } from '../../components';
+import { Header } from '../../components';
 
 export function LandingPage() {
-  return (
-    <>
-      <Header linkActive={null} />
-
-      <WhatsAppButton product='Enfeite de Páscoa' />
-
-      <Footer />
-    </>
-  );
+  return <Header linkActive={null} />;
 }

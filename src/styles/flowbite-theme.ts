@@ -52,4 +52,11 @@ export const flowbiteTheme: CustomFlowbiteTheme = {
       primary: 'fill-primary',
     },
   },
+
+  card: {
+    root: {
+      base: 'flex rounded-lg bg-background-color dark:bg-background-color shadow-default',
+      children: 'flex h-full flex-col justify-center items-center gap-2 p-4',
+    },
+  },
 };

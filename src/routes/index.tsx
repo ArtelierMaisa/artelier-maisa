@@ -7,7 +7,9 @@ export function Router() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<LandingPage />} />
-        <Route path='/products' element={<Products />} />
+        <Route path='/products' element={<Products />}>
+          <Route path='/products/:id' element={<Products />} />
+        </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
