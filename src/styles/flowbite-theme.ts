@@ -4,9 +4,9 @@ export const flowbiteTheme: CustomFlowbiteTheme = {
   carousel: {
     root: {
       leftControl:
-        'absolute left-0 top-0 flex h-full items-center justify-center px-8 focus:outline-none',
+        'absolute left-0 top-0 flex h-full items-center justify-center px-8',
       rightControl:
-        'absolute right-0 top-0 flex h-full items-center justify-center px-8 focus:outline-none',
+        'absolute right-0 top-0 flex h-full items-center justify-center px-8',
     },
     scrollContainer: {
       base: 'flex h-full snap-mandatory overflow-y-hidden overflow-x-scroll scroll-smooth rounded-none',
@@ -16,7 +16,7 @@ export const flowbiteTheme: CustomFlowbiteTheme = {
         off: 'bg-primary60 hover:bg-primary dark:bg-primary60 dark:hover:bg-primary',
         on: 'bg-primary dark:bg-primary',
       },
-      base: 'h-6 w-6 rounded-full',
+      base: 'h-5 w-5 rounded-full',
       wrapper: 'absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-4',
     },
   },

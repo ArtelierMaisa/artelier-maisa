@@ -1,5 +1,6 @@
 export * from './Carousel';
 export * from './CarouselButton';
+export * from './CarouselImage';
 export * from './Footer';
 export * from './GenericButton';
 export * from './Header';

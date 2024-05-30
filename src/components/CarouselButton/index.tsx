@@ -22,7 +22,7 @@ export function CarouselButton(props: CarouselButtonProps) {
 
   return (
     <>
-      <span className='inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary dark:bg-primary group-hover:bg-primary60 dark:group-hover:bg-primary60 group-focus:ring-4 group-focus:ring-primary dark:group-focus:ring-primary group-focus:outline-none'>
+      <span className='inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary dark:bg-primary group-hover:bg-primary60 dark:group-hover:bg-primary60 group-focus:outline-none'>
         {icons[type]}
 
         <span className='sr-only'>{isNext ? 'Próximo' : 'Anterior'}</span>
