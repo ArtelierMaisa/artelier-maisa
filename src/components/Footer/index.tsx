@@ -2,6 +2,7 @@ import { Footer as FlowbiteFooter } from 'flowbite-react';
 
 import packageJson from '../../../package.json';
 import { IconProps } from '../../@types';
+import { DEFAULT_EMAIL } from '../../config';
 import { Icon, Text } from '../';
 
 export function Footer() {
@@ -67,8 +68,9 @@ export function Footer() {
             {...commonIconProps}
           />
 
-          {/* TODO: Add Real e-mail of Maisa  */}
-          <a href='mailto:'>
+          <a
+            href={`mailto:${DEFAULT_EMAIL}?subject=Tenho interesse nos seus produtos!&body=Olá, tudo bem? Espero que sim! Estava olhando o seu site e resolvi entrar em contato, tenho interesse em seus produtos.`}
+          >
             <Icon
               variant='envelope-simple'
               color='email'
