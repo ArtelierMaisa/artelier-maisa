@@ -1,3 +1,7 @@
+export type WhatsAppButtonPropsType = 'footer' | 'whatsapp-button';
+
 export interface WhatsAppButtonProps {
-  phone: string;
+  type?: WhatsAppButtonPropsType,
+  phone?: string;
+  product?: string;
 }
