@@ -45,4 +45,11 @@ export const flowbiteTheme: CustomFlowbiteTheme = {
       span: 'ml-1',
     },
   },
+
+  spinner: {
+    base: 'inline animate-spin text-white',
+    color: {
+      primary: 'fill-primary',
+    },
+  },
 };
