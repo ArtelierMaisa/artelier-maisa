@@ -1,12 +1,9 @@
-export type CarouselType = 'banner' | 'product';
+import { ReactNode } from 'react';
 
-export interface CarouselImageProps {
-  id: string;
-  url: string;
-}
-
+export type CarouselType = 'banner' | 'product' | 'event';
 export interface CarouselProps {
-  type: CarouselType;
-  images: CarouselImageProps[];
+  children: ReactNode;
+  type?: CarouselType;
   isSlide?: boolean;
+  showIndicators?: boolean;
 }

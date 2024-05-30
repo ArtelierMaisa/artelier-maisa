@@ -4,9 +4,9 @@ export const flowbiteTheme: CustomFlowbiteTheme = {
   carousel: {
     root: {
       leftControl:
-        'absolute left-0 top-0 flex h-full items-center justify-center px-8',
+        'absolute left-0 top-0 flex h-full items-center justify-center px-2 sm:px-6 md:px-8',
       rightControl:
-        'absolute right-0 top-0 flex h-full items-center justify-center px-8',
+        'absolute right-0 top-0 flex h-full items-center justify-center px-2 sm:px-6 md:px-8',
     },
     scrollContainer: {
       base: 'flex h-full snap-mandatory overflow-y-hidden overflow-x-scroll scroll-smooth rounded-none',
@@ -18,6 +18,11 @@ export const flowbiteTheme: CustomFlowbiteTheme = {
       },
       base: 'h-5 w-5 rounded-full',
       wrapper: 'absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-4',
+    },
+    item: {
+      wrapper: {
+        on: 'w-full flex-shrink-0 transform cursor-default snap-center',
+      },
     },
   },
 
@@ -57,6 +62,9 @@ export const flowbiteTheme: CustomFlowbiteTheme = {
     root: {
       base: 'flex rounded-lg bg-background-color dark:bg-background-color shadow-default',
       children: 'flex h-full flex-col justify-center items-center gap-2 p-4',
+      horizontal: {
+        on: 'flex-col md:flex-row-reverse',
+      },
     },
   },
 };

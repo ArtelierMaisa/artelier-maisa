@@ -5,28 +5,29 @@ import { carouselHeights } from '../../constants';
 import { CarouselButton } from '../CarouselButton';
 
 export function Carousel(props: CarouselProps) {
-  const { images, type, isSlide = true } = props;
+  const {
+    children,
+    type = 'banner',
+    isSlide = true,
+    showIndicators = true,
+  } = props;
+
+  const hasChildren = Array.isArray(children) ? children.length > 1 : false;
 
   const isProduct = type === 'product';
-  const hasOneImage = images.length === 1;
+  const isBanner = type === 'banner';
+  const slideInterval = isBanner ? 3000 : 5000;
 
   return (
     <div className={`max-w-full ${carouselHeights[type]}`}>
       <FlowbiteCarousel
         slide={isSlide && !isProduct}
-        slideInterval={5000}
-        indicators={!hasOneImage && !isProduct}
+        slideInterval={slideInterval}
+        indicators={showIndicators && isBanner && hasChildren}
         rightControl={<CarouselButton type='previous' />}
         leftControl={<CarouselButton type='next' />}
       >
-        {images.map((image, index) => (
-          <img
-            key={image.id}
-            src={image.url}
-            alt={`Imagem ${index + 1}`}
-            className='w-full h-full max-w-full rounded-none object-cover'
-          />
-        ))}
+        {children}
       </FlowbiteCarousel>
     </div>
   );

@@ -1,16 +1,9 @@
 import { Card } from 'flowbite-react';
 import { useNavigate } from 'react-router-dom';
 
+import { ProductCardProps } from '../../@types';
 import { GenericButton } from '../GenericButton';
 import { Text } from '../Text';
-
-export interface ProductCardProps {
-  id: string;
-  name: string;
-  description: string;
-  price: string;
-  image: string;
-}
 
 export function ProductCard(props: ProductCardProps) {
   const { id, name, description, price, image } = props;
