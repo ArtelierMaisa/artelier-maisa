@@ -21,22 +21,23 @@ export function Footer() {
 
   return (
     <FlowbiteFooter container className='border-t border-primary'>
-      <div className='flex flex-wrap'>
+      <div className='flex flex-1 flex-wrap justify-center md:justify-start items-center pb-0 sm:pb-2 md:pb-0 gap-1'>
         <FlowbiteFooter.Copyright
           by='Artelier by Maisa™.'
           year={currentYear}
         />
-        <div className='flex flex-row gap-1'>
+
+        <div className='flex flex-col sm:flex-row items-center sm:items-center gap-1'>
           <Text type='semibold'>Todos os Direitos Revervados.</Text>
 
           <Text>Versão {version}.</Text>
         </div>
       </div>
 
-      <div className='flex flex-wrap gap-1'>
-        <Text>
+      <div className='flex flex-1 flex-wrap gap-1 justify-center items-center md:justify-end'>
+        <Text className='text-center sm:text-right'>
           Plataforma desenvolvida em parceria com a{' '}
-          <Text isInline isCursorPointer isUnderlined>
+          <Text display='inline-flex' isCursorPointer isUnderlined>
             <a
               className='w-full h-full'
               href='https://www.univali.br/'
@@ -44,12 +45,12 @@ export function Footer() {
             >
               Univali
             </a>
+
+            <Icon variant='heart' color='alert' size='x-small' />
           </Text>
         </Text>
 
-        <Icon variant='heart' color='alert' size='x-small' />
-
-        <div className='flex gap-4 ml-3'>
+        <div className='flex gap-4 sm:ml-3 sm:justify-center'>
           <a href='https://www.facebook.com/artelier.maisa/' target='_blank'>
             <Icon
               variant='facebook-logo'

@@ -12,22 +12,28 @@ export function Text(props: TextProps) {
     type = 'regular',
     color = 'text',
     size = 'base',
+    display = 'block',
     toCenter = false,
-    isInline = false,
     hoverColor = color,
     isCursorPointer = false,
     isUnderlined = false,
+    className,
     onClick,
   } = props;
 
+  const textDisplays: Record<Required<TextProps>['display'], string> = {
+    'inline-flex': 'inline-flex',
+    block: 'block',
+    inline: 'inline',
+  };
+
   const textAlign = `text-${toCenter ? 'center' : 'left'}`;
-  const display = isInline ? 'inline' : 'block';
   const cursor = isCursorPointer ? 'cursor-pointer' : '';
   const underline = isUnderlined ? 'underline' : '';
 
   return (
     <p
-      className={`${display} ${textColors[color]} ${textWeights[type]} ${textSizes[size]} ${textAlign} ${textHoverColors[hoverColor]} ${cursor} ${underline}`}
+      className={`${textDisplays[display]} ${textColors[color]} ${textWeights[type]} ${textSizes[size]} ${textAlign} ${textHoverColors[hoverColor]} ${cursor} ${underline} ${className}`}
       onClick={onClick}
     >
       {children}

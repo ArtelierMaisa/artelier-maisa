@@ -39,7 +39,7 @@ export function ProductCard(props: ProductCardProps) {
 
         <Text type='medium' size='xl'>
           Por{' '}
-          <Text type='semibold' size='xl' isInline>
+          <Text type='semibold' size='xl' display='inline'>
             {price}
           </Text>
         </Text>

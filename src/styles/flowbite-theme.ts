@@ -40,8 +40,8 @@ export const flowbiteTheme: CustomFlowbiteTheme = {
 
   footer: {
     root: {
-      base: 'w-full rounded-none bg-background-color dark:bg-background-color md:flex md:items-center md:justify-between',
-      container: 'w-full h-16 p-6',
+      base: 'w-full rounded-none bg-background-color dark:bg-background-color md:flex',
+      container: 'w-full h-auto p-6',
       bgDark: 'bg-background-color',
     },
     copyright: {

@@ -7,7 +7,7 @@ import { flowbiteTheme } from './styles';
 
 function App() {
   return (
-    <Flowbite theme={{ theme: flowbiteTheme }}>
+    <Flowbite theme={{ theme: flowbiteTheme, mode: 'light' }}>
       <Router />
     </Flowbite>
   );
