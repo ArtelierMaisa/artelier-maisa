@@ -37,17 +37,13 @@ export function Footer() {
       <div className='flex flex-1 flex-wrap gap-1 justify-center items-center md:justify-end'>
         <Text className='text-center sm:text-right'>
           Plataforma desenvolvida em parceria com a{' '}
-          <Text display='inline-flex' isCursorPointer isUnderlined>
-            <a
-              className='w-full h-full'
-              href='https://www.univali.br/'
-              target='_blank'
-            >
+          <span className='inline-flex justify-center items-center text-base text-text font-normal cursor-pointer underline gap-1'>
+            <a href='https://www.univali.br/' target='_blank'>
               Univali
             </a>
 
             <Icon variant='heart' color='alert' size='x-small' />
-          </Text>
+          </span>
         </Text>
 
         <div className='flex gap-4 sm:ml-3 sm:justify-center'>

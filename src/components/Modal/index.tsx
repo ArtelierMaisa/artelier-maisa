@@ -20,10 +20,9 @@ export function Modal(props: ModalProps) {
       isOpen={isOpen}
       onRequestClose={onClose}
       shouldCloseOnEsc
-      shouldCloseOnOverlayClick
+      ariaHideApp={false}
       overlayClassName='fixed inset-0 bg-text50 border-none'
       className='flex flex-col w-full h-full justify-center items-center py-8'
-      ariaHideApp={false}
     >
       <div className='relative flex flex-col w-full lg:w-[40rem] lg:h-auto overflow-hidden rounded-2xl bg-background-color shadow-default overflow-y-scroll scrollbar scrollbar-thumb-primary scrollbar-track-background-color'>
         <button
