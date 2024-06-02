@@ -1,8 +1,8 @@
 export interface ProductImageProps {
   id: string;
-  uri: string
+  uri: string;
 }
-  
+
 export interface ProductProps {
   id: string;
   title: string;
@@ -14,7 +14,7 @@ export interface ProductProps {
   material?: string;
   whatsapp?: string;
 }
-  
+
 export interface ModalProps {
   isOpen: boolean;
   product: ProductProps;

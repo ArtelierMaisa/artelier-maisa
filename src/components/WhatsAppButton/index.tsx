@@ -16,7 +16,13 @@ export function WhatsAppButton(props: WhatsAppButtonProps) {
       className='flex flex-row gap-1 w-auto max-w-[32rem] h-16 p-5 bg-whatsapp text-white justify-center items-center rounded-lg hover:opacity-90 transition-colors duration-300'
       onClick={onSendWhatsAppMessage}
     >
-      <Text type='medium' color='white' size='xl' isCursorPointer>
+      <Text
+        type='medium'
+        color='white'
+        className='text-base md:text-xl'
+        isCursorPointer
+        toCenter
+      >
         Entrar em Contanto via WhatsApp
       </Text>
 
