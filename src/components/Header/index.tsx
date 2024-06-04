@@ -1,6 +1,7 @@
 import { Navbar } from 'flowbite-react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-scroll';
 
 import { HeaderLinkActiveType, HeaderProps, TextProps } from '../../@types';
 import { PRIMARY_LOGO } from '../../config';
@@ -22,7 +23,6 @@ export function Header(props: HeaderProps) {
 
   function handleCurrentLink(link: HeaderLinkActiveType): void {
     setCurrentLink(link);
-
     navigate(link === 'products' ? '/products' : '/');
   }
 
@@ -53,8 +53,12 @@ export function Header(props: HeaderProps) {
           </Text>
         </Navbar.Link>
 
-        <Navbar.Link
-          active={isAbout}
+        <Link
+          to='about'
+          smooth
+          spy
+          duration={750}
+          className='w-auto h-full'
           onClick={() => handleCurrentLink('about')}
         >
           <Text
@@ -63,10 +67,14 @@ export function Header(props: HeaderProps) {
           >
             Sobre a Maisa
           </Text>
-        </Navbar.Link>
+        </Link>
 
-        <Navbar.Link
-          active={isEvents}
+        <Link
+          to='events'
+          smooth
+          spy
+          duration={500}
+          className='w-auto h-full'
           onClick={() => handleCurrentLink('events')}
         >
           <Text
@@ -75,7 +83,7 @@ export function Header(props: HeaderProps) {
           >
             Divulgações
           </Text>
-        </Navbar.Link>
+        </Link>
       </Navbar.Collapse>
 
       <a
