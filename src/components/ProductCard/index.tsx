@@ -30,9 +30,9 @@ export function ProductCard(props: ProductCardProps) {
       <div className='flex flex-row w-full justify-between items-center'>
         <GenericButton title='Ver mais' type='small' onClick={onSeeMore} />
 
-        <Text type='medium' size='xl'>
+        <Text type='medium' className='text-base sm:text-xl'>
           Por{' '}
-          <span className='inline text-text font-semibold text-xl'>
+          <span className='inline text-text font-bold sm:text-semibold text-base sm:text-xl'>
             {price}
           </span>
         </Text>

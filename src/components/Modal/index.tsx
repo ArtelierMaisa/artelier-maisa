@@ -39,7 +39,7 @@ export function Modal(props: ModalProps) {
           ))}
         </Carousel>
 
-        <div className='flex flex-col w-full h-full items-center px-4 py-6 gap-2'>
+        <div className='flex flex-col w-full h-auto items-center px-4 py-6 gap-2'>
           <Text type='semibold' size='xl' toCenter>
             {product.title}
           </Text>
