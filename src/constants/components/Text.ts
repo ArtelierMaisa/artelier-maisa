@@ -50,3 +50,9 @@ export const textSizes = {
   '4xl': 'text-4xl',
   '5xl': 'text-5xl',
 };
+
+export const textDisplays: Record<Required<TextProps>['display'], string> = {
+  'inline-flex': 'inline-flex',
+  block: 'block',
+  inline: 'inline',
+};

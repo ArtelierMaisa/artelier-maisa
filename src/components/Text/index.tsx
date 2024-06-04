@@ -1,6 +1,7 @@
 import { TextProps } from '../../@types';
 import {
   textColors,
+  textDisplays,
   textHoverColors,
   textSizes,
   textWeights,
@@ -20,12 +21,6 @@ export function Text(props: TextProps) {
     className,
     onClick,
   } = props;
-
-  const textDisplays: Record<Required<TextProps>['display'], string> = {
-    'inline-flex': 'inline-flex',
-    block: 'block',
-    inline: 'inline',
-  };
 
   const textAlign = `text-${toCenter ? 'center' : 'left'}`;
   const cursor = isCursorPointer ? 'cursor-pointer' : '';

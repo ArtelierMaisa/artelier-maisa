@@ -15,7 +15,7 @@ import {
 import { PRIMARY_LOGO, SECONDARY_LOGO } from '../../config';
 
 export function LandingPage() {
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
@@ -42,6 +42,7 @@ export function LandingPage() {
               name='Lorem ipsum dolor'
               price='R$ 49,90'
               description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis commodi sit soluta, similique amet molestias tenetur dolorem non unde temporibus aut numquam nesciunt enim nisi nobis qui, officiis laudantium! Unde! Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis commodi sit soluta, similique amet molestias tenetur dolorem non unde temporibus aut numquam nesciunt enim nisi nobis qui, officiis laudantium! Unde!'
+              onSeeMore={() => setIsOpen(true)}
             />
 
             <ProductCard
@@ -50,6 +51,7 @@ export function LandingPage() {
               name='Lorem ipsum dolor'
               price='R$ 49,90'
               description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis commodi sit soluta, similique amet molestias tenetur dolorem non unde temporibus aut numquam nesciunt enim nisi nobis qui, officiis laudantium! Unde! Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis commodi sit soluta, similique amet molestias tenetur dolorem non unde temporibus aut numquam nesciunt enim nisi nobis qui, officiis laudantium! Unde!'
+              onSeeMore={() => setIsOpen(true)}
             />
 
             <ProductCard
@@ -58,6 +60,7 @@ export function LandingPage() {
               name='Lorem ipsum dolor'
               price='R$ 49,90'
               description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis commodi sit soluta, similique amet molestias tenetur dolorem non unde temporibus aut numquam nesciunt enim nisi nobis qui, officiis laudantium! Unde! Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis commodi sit soluta, similique amet molestias tenetur dolorem non unde temporibus aut numquam nesciunt enim nisi nobis qui, officiis laudantium! Unde!'
+              onSeeMore={() => setIsOpen(true)}
             />
           </div>
 
