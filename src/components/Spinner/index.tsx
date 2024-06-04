@@ -4,12 +4,12 @@ import { SpinnerProps } from '../../@types';
 import { spinnerSizes } from '../../constants';
 
 export function Spinner(props: SpinnerProps) {
-  const { size = 'medium' } = props;
+  const { size = 'medium', color = 'primary' } = props;
 
   return (
     <FlowbiteSpinner
       aria-label='Loading...'
-      color='primary'
+      color={color}
       size={spinnerSizes[size]}
     />
   );
