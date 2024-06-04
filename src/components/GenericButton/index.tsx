@@ -1,5 +1,6 @@
-import { Colors, GenericButtonProps } from '../../@types';
+import { Colors, GenericButtonProps, SpinnerColor } from '../../@types';
 import { genericButtonHeights } from '../../constants';
+import { Spinner } from '../Spinner';
 import { Text } from '../Text';
 
 export function GenericButton(props: GenericButtonProps) {
@@ -9,8 +10,17 @@ export function GenericButton(props: GenericButtonProps) {
     type = 'medium',
     isDisabled = false,
     isHugWidth = false,
+    isLoading = false,
     onClick,
   } = props;
+
+  const genericButtonSpinnerColors: Record<
+    Required<GenericButtonProps>['variant'],
+    SpinnerColor
+  > = {
+    primary: isDisabled ? 'white60' : 'white',
+    secondary: isDisabled ? 'primary60' : 'primary',
+  };
 
   const genericButtonTextColors: Record<
     Required<GenericButtonProps>['variant'],
@@ -34,20 +44,24 @@ export function GenericButton(props: GenericButtonProps) {
 
   return (
     <button
-      className={`flex ${width} items-center ${genericButtonHeights[type]} px-6 ${paddingY} ${genericButtonBackgroundColors[variant]} rounded-lg ${cursor} hover:opacity-90 transition-colors duration-300 disabled:hover:opacity-100`}
+      className={`flex ${width} justify-center items-center ${genericButtonHeights[type]} px-6 ${paddingY} ${genericButtonBackgroundColors[variant]} rounded-lg ${cursor} hover:opacity-90 transition-colors duration-300 disabled:hover:opacity-100`}
       type='button'
       disabled={isDisabled}
       aria-disabled={isDisabled}
       onClick={onClick}
     >
-      <Text
-        type='semibold'
-        color={genericButtonTextColors[variant]}
-        size='xl'
-        toCenter
-      >
-        {title}
-      </Text>
+      {isLoading ? (
+        <Spinner size='medium' color={genericButtonSpinnerColors[variant]} />
+      ) : (
+        <Text
+          type='semibold'
+          color={genericButtonTextColors[variant]}
+          size='xl'
+          toCenter
+        >
+          {title}
+        </Text>
+      )}
     </button>
   );
 }

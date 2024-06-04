@@ -8,5 +8,6 @@ export interface GenericButtonProps {
   type?: GenericButtonType;
   isDisabled?: boolean;
   isHugWidth?: boolean;
+  isLoading?: boolean;
   onClick?(): void;
 }
