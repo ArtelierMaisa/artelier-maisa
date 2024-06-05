@@ -3,7 +3,6 @@ export * from './CarouselButton';
 export * from './CarouselEvent';
 export * from './CarouselImage';
 export * from './GenericButton';
-export * from './Header';
 export * from './Icon';
 export * from './Metric';
 export * from './Modal';

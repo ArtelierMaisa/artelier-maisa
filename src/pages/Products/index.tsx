@@ -25,7 +25,7 @@ export function Products() {
   return (
     <>
       <main className='relative flex flex-col flex-1 w-full h-screen'>
-        <Header linkActive='products' />
+        <Header />
 
         <div className='flex w-full h-auto justify-center px-4 my-8 md:mt-10 md:mb-12'>
           <SearchInput

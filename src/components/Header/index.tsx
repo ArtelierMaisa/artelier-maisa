@@ -1,19 +1,13 @@
 import { Navbar } from 'flowbite-react';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-scroll';
 
-import { HeaderLinkActiveType, HeaderProps, TextProps } from '../../@types';
+import { TextProps } from '../../@types';
 import { PRIMARY_LOGO } from '../../config';
+import { useScrollTop } from '../../hooks';
 import { Text } from '../Text';
 
-export function Header(props: HeaderProps) {
-  const { linkActive } = props;
-
-  const navigate = useNavigate();
-
-  const [currentLink, setCurrentLink] =
-    useState<HeaderLinkActiveType>(linkActive);
+export function Header() {
+  const { handleTo, to } = useScrollTop();
 
   const commonTextProps: Omit<TextProps, 'children'> = {
     type: 'semibold',
@@ -21,18 +15,13 @@ export function Header(props: HeaderProps) {
     isCursorPointer: true,
   };
 
-  function handleCurrentLink(link: HeaderLinkActiveType): void {
-    setCurrentLink(link);
-    navigate(link === 'products' ? '/products' : '/');
-  }
-
-  const isAbout = currentLink === 'about';
-  const isEvents = currentLink === 'events';
-  const isProducts = currentLink === 'products';
+  const isAbout = to === 'about';
+  const isEvents = to === 'events';
+  const isProducts = to === 'products';
 
   return (
     <Navbar fluid rounded={false}>
-      <Navbar.Brand onClick={() => handleCurrentLink(null)}>
+      <Navbar.Brand onClick={() => handleTo(null)}>
         <img
           src={PRIMARY_LOGO}
           className='mr-3 w-16 h-16 cursor-pointer'
@@ -41,10 +30,7 @@ export function Header(props: HeaderProps) {
       </Navbar.Brand>
 
       <Navbar.Collapse>
-        <Navbar.Link
-          active={isProducts}
-          onClick={() => handleCurrentLink('products')}
-        >
+        <Navbar.Link active={isProducts} onClick={() => handleTo('products')}>
           <Text
             color={isProducts ? 'white' : 'background-color'}
             {...commonTextProps}
@@ -57,9 +43,10 @@ export function Header(props: HeaderProps) {
           to='about'
           smooth
           spy
+          delay={100}
           duration={750}
           className='w-auto h-full'
-          onClick={() => handleCurrentLink('about')}
+          onClick={() => handleTo('about')}
         >
           <Text
             color={isAbout ? 'white' : 'background-color'}
@@ -73,9 +60,10 @@ export function Header(props: HeaderProps) {
           to='events'
           smooth
           spy
+          delay={100}
           duration={500}
           className='w-auto h-full'
-          onClick={() => handleCurrentLink('events')}
+          onClick={() => handleTo('events')}
         >
           <Text
             color={isEvents ? 'white' : 'background-color'}
@@ -88,7 +76,7 @@ export function Header(props: HeaderProps) {
 
       <a
         className='flex flex-1 justify-end cursor-default'
-        onClick={() => handleCurrentLink(null)}
+        onClick={() => handleTo(null)}
       >
         <Text type='bold' color='white' size='xl' isCursorPointer>
           Artelier by Maisa

@@ -27,7 +27,7 @@ export function LandingPage() {
   return (
     <>
       <main className='flex flex-col flex-1 w-full h-auto'>
-        <Header linkActive={null} />
+        <Header />
 
         <Carousel type='banner'>
           <CarouselImage id='123' uri={PRIMARY_LOGO} />
