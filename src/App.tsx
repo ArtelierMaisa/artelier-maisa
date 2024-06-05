@@ -1,13 +1,16 @@
-import { Horse, Heart, Cube } from "@phosphor-icons/react";
+import './styles/global.scss';
+
+import { Flowbite } from 'flowbite-react';
+
+import { Router } from './routes';
+import { flowbiteTheme } from './styles';
 
 function App() {
   return (
-    <main>
-      <Horse />
-      <Heart color="#AE2983" weight="fill" size={32} />
-      <Cube color="teal" weight="duotone" />
-    </main>
-  )
+    <Flowbite theme={{ theme: flowbiteTheme, mode: 'light' }}>
+      <Router />
+    </Flowbite>
+  );
 }
 
 export default App;
