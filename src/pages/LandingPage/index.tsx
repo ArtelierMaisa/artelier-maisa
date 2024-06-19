@@ -72,6 +72,7 @@ export function LandingPage() {
           />
         </section>
 
+        {/* TODO: Events can't exists. You create a conditional rule */}
         <Element name='events'>
           <Carousel type='event'>
             <CarouselEvent

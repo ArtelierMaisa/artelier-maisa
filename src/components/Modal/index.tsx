@@ -24,7 +24,7 @@ export function Modal(props: ModalProps) {
       overlayClassName='fixed inset-0 bg-text50 border-none'
       className='flex flex-col w-full h-full justify-center items-center py-8'
     >
-      <div className='relative flex flex-col w-full lg:w-[40rem] lg:h-auto overflow-hidden rounded-2xl bg-background-color shadow-default overflow-y-scroll scrollbar scrollbar-thumb-primary scrollbar-track-background-color'>
+      <div className='relative flex flex-col w-full md:w-[40rem] lg:w-[48rem] lg:h-auto overflow-hidden rounded-2xl bg-background-color shadow-default scrollbar scrollbar-w-3 scrollbar-thumb-rounded-lg scrollbar-thumb-primary scrollbar-track-background-color overflow-y-auto'>
         <button
           type='button'
           className='absolute top-3 right-3 z-20 flex w-8 h-8 justify-center items-center bg-primary rounded-full shadow-default hover:opacity-60 transition-colors duration-300'

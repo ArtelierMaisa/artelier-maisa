@@ -56,6 +56,7 @@ export function Header() {
           </Text>
         </Link>
 
+        {/* TODO: Events can't exists. You create a conditional rule */}
         <Link
           to='events'
           smooth
