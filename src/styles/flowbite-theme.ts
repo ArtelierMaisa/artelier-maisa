@@ -64,7 +64,8 @@ export const flowbiteTheme: CustomFlowbiteTheme = {
   card: {
     root: {
       base: 'flex rounded-lg bg-background-color shadow-default',
-      children: 'flex h-full flex-col justify-center items-center gap-2 p-4',
+      children:
+        'flex w-full h-full flex-col justify-center items-center gap-2 p-4',
       horizontal: {
         on: 'flex-col md:flex-row-reverse',
       },

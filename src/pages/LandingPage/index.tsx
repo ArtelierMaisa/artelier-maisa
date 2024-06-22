@@ -20,7 +20,7 @@ import { useUser } from '../../hooks';
 export function LandingPage() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const { about, isLoaded } = useUser();
+  const { about, highlights, isLoaded } = useUser();
   const navigate = useNavigate();
 
   function navigateToProductPage(): void {
@@ -77,24 +77,20 @@ export function LandingPage() {
               />
             </section>
 
-            {/* TODO: Events can't exists. You create a conditional rule */}
-            <Element name='events'>
-              <Carousel type='event'>
-                <CarouselEvent
-                  id='123'
-                  image={PRIMARY_LOGO}
-                  title='Lorem ipsum dolor sit'
-                  description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis commodi sit soluta, similique amet molestias tenetur dolorem non unde temporibus aut numquam nesciunt enim nisi nobis qui, officiis laudantium! Unde! Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis commodi sit soluta, similique amet molestias tenetur dolorem non unde temporibus aut numquam nesciunt enim nisi nobis qui, officiis laudantium! Unde!'
-                />
-
-                <CarouselEvent
-                  id='456'
-                  image={SECONDARY_LOGO}
-                  title='Lorem ipsum dolor sit'
-                  description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis commodi sit soluta, similique amet molestias tenetur dolorem non unde temporibus aut numquam nesciunt enim nisi nobis qui, officiis laudantium! Unde! Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis commodi sit soluta, similique amet molestias tenetur dolorem non unde temporibus aut numquam nesciunt enim nisi nobis qui, officiis laudantium! Unde!'
-                />
-              </Carousel>
-            </Element>
+            {highlights.length > 0 && (
+              <Element name='events'>
+                <Carousel type='event'>
+                  {highlights.map(highlight => (
+                    <CarouselEvent
+                      key={highlight.id}
+                      image={highlight.image.uri}
+                      title={highlight.title}
+                      description={highlight.description}
+                    />
+                  ))}
+                </Carousel>
+              </Element>
+            )}
 
             <Element name='about'>
               <section className='flex flex-col mt-3 mb-6 bg-transparent'>
@@ -106,7 +102,7 @@ export function LandingPage() {
                   <div className='flex flex-col w-full lg:w-1/3 justify-center items-center gap-4 lg:border-r-[1px] border-b-[1px] lg:border-b-0 border-r-primary border-b-primary px-8 pb-8 lg:pb-0 py-2'>
                     <img
                       src={about?.uri}
-                      alt='Foto da Maisa'
+                      alt={`Foto de ${about?.name}`}
                       className='w-60 h-60 rounded-full shadow-default'
                     />
 

@@ -1,4 +1,4 @@
-import { get, ref } from 'firebase/database';
+import { get, ref, remove } from 'firebase/database';
 import {
   createContext,
   PropsWithChildren,
@@ -8,8 +8,9 @@ import {
 } from 'react';
 import { toast } from 'sonner';
 
-import { About, UserContextProps } from '../@types';
+import { About, Highlight, UserContextProps } from '../@types';
 import { database } from '../services';
+import { mapper } from '../utils';
 
 // TODO: Create type to UserContext in @types/contexts.
 export const UserContext = createContext({} as UserContextProps);
@@ -17,9 +18,15 @@ export const UserContext = createContext({} as UserContextProps);
 // TODO: Create the data user logic. Add all requests and states this context.
 export function UserProvider({ children }: Required<PropsWithChildren>) {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const [highlights, setHighlights] = useState<Highlight[]>([]);
   const [about, setAbout] = useState<About>({} as About);
 
-  function handleAboutToastError(): void {
+  function isGreaterThanPeriodRemove(highlight: Highlight): boolean {
+    const currentTime = new Date().getTime();
+    return currentTime > highlight.removedAt;
+  }
+
+  function handleGenericErrorToast(): void {
     toast.error(
       'Falha ao buscar suas informações! Algo deu errado durante a busca de informações. Por favor, tente novamente. Se o problema persistir, entre em contato com o suporte técnico.',
       { duration: 7500 },
@@ -30,30 +37,53 @@ export function UserProvider({ children }: Required<PropsWithChildren>) {
     const aboutRef = ref(database, 'about');
     const aboutSnapshot = await get(aboutRef);
 
-    if (!aboutSnapshot.exists()) return handleAboutToastError();
+    if (!aboutSnapshot.exists()) return handleGenericErrorToast();
 
-    const aboutFirebase: About = Object.keys(aboutSnapshot.val()).map(key => ({
-      ...aboutSnapshot.val()[key],
-      id: key,
-    }))[0];
+    const aboutFirebase = mapper<About[]>(aboutSnapshot)[0];
 
-    if (!aboutFirebase) return handleAboutToastError();
+    if (!aboutFirebase) return handleGenericErrorToast();
 
     setAbout(aboutFirebase);
   }, []);
 
+  const handleGetHighlights = useCallback(async () => {
+    const highlightsRef = ref(database, 'highlights');
+    const highlightsSnapshot = await get(highlightsRef);
+
+    if (!highlightsSnapshot.exists()) return setHighlights([]);
+
+    const highlightsFirebase = mapper<Highlight[]>(highlightsSnapshot);
+
+    if (!highlightsFirebase) return handleGenericErrorToast();
+
+    // TODO -> REMOVE HIGHLIGHTS IMAGES FROM FIREBASE STORAGE
+    highlightsFirebase.forEach(async highlight => {
+      if (isGreaterThanPeriodRemove(highlight)) {
+        const highlightRef = ref(database, `highlights/${highlight.id}`);
+        remove(highlightRef);
+      }
+    });
+
+    const highlightsInPeriod = highlightsFirebase.filter(
+      highlight => !isGreaterThanPeriodRemove(highlight),
+    );
+
+    setHighlights(highlightsInPeriod);
+  }, []);
+
   const fetchFirebase = useCallback(async () => {
     await handleGetAbout();
+    await handleGetHighlights();
 
     setIsLoaded(true);
-  }, [handleGetAbout]);
+  }, [handleGetAbout, handleGetHighlights]);
 
   useEffect(() => {
     fetchFirebase();
   }, [fetchFirebase]);
 
   return (
-    <UserContext.Provider value={{ about, isLoaded }}>
+    <UserContext.Provider value={{ about, highlights, isLoaded }}>
       {children}
     </UserContext.Provider>
   );

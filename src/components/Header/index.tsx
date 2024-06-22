@@ -3,10 +3,11 @@ import { Link } from 'react-scroll';
 
 import { TextProps } from '../../@types';
 import { PRIMARY_LOGO } from '../../config';
-import { useScrollTop } from '../../hooks';
+import { useScrollTop, useUser } from '../../hooks';
 import { Text } from '../Text';
 
 export function Header() {
+  const { highlights } = useUser();
   const { handleTo, to } = useScrollTop();
 
   const commonTextProps: Omit<TextProps, 'children'> = {
@@ -56,23 +57,23 @@ export function Header() {
           </Text>
         </Link>
 
-        {/* TODO: Events can't exists. You create a conditional rule */}
-        <Link
-          to='events'
-          smooth
-          spy
-          delay={100}
-          duration={500}
-          className='w-auto h-full'
-          onClick={() => handleTo('events')}
-        >
-          <Text
-            color={isEvents ? 'white' : 'background-color'}
-            {...commonTextProps}
+        {highlights.length > 0 && (
+          <Link
+            to='events'
+            smooth
+            spy
+            delay={100}
+            duration={500}
+            onClick={() => handleTo('events')}
           >
-            Divulgações
-          </Text>
-        </Link>
+            <Text
+              color={isEvents ? 'white' : 'background-color'}
+              {...commonTextProps}
+            >
+              Divulgações
+            </Text>
+          </Link>
+        )}
       </Navbar.Collapse>
 
       <a
