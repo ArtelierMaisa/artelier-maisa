@@ -8,7 +8,7 @@ import {
 } from 'react';
 import { toast } from 'sonner';
 
-import { About, Highlight, UserContextProps } from '../@types';
+import { About, Banner, Highlight, UserContextProps } from '../@types';
 import { database } from '../services';
 import { mapper } from '../utils';
 
@@ -19,6 +19,7 @@ export const UserContext = createContext({} as UserContextProps);
 export function UserProvider({ children }: Required<PropsWithChildren>) {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [highlights, setHighlights] = useState<Highlight[]>([]);
+  const [banners, setBanners] = useState<Banner[]>([]);
   const [about, setAbout] = useState<About>({} as About);
 
   function isGreaterThanPeriodRemove(highlight: Highlight): boolean {
@@ -71,19 +72,33 @@ export function UserProvider({ children }: Required<PropsWithChildren>) {
     setHighlights(highlightsInPeriod);
   }, []);
 
+  const handleGetBanners = useCallback(async () => {
+    const bannersRef = ref(database, 'banners');
+    const bannersSnapshot = await get(bannersRef);
+
+    if (!bannersSnapshot.exists()) return handleGenericErrorToast();
+
+    const bannersFirebase = mapper<Banner[]>(bannersSnapshot);
+
+    if (!bannersFirebase) return handleGenericErrorToast();
+
+    setBanners(bannersFirebase);
+  }, []);
+
   const fetchFirebase = useCallback(async () => {
-    await handleGetAbout();
+    await handleGetBanners();
     await handleGetHighlights();
+    await handleGetAbout();
 
     setIsLoaded(true);
-  }, [handleGetAbout, handleGetHighlights]);
+  }, [handleGetAbout, handleGetHighlights, handleGetBanners]);
 
   useEffect(() => {
     fetchFirebase();
   }, [fetchFirebase]);
 
   return (
-    <UserContext.Provider value={{ about, highlights, isLoaded }}>
+    <UserContext.Provider value={{ about, highlights, banners, isLoaded }}>
       {children}
     </UserContext.Provider>
   );

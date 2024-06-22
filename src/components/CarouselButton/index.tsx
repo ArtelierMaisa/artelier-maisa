@@ -15,7 +15,7 @@ export function CarouselButton(props: CarouselButtonProps) {
     size: 'x-small',
   };
 
-  const icons: Record<CarouselButtonType, JSX.Element> = {
+  const icons: Record<CarouselButtonType, React.JSX.Element> = {
     next: <Icon variant='caret-left' {...iconCommonProps} />,
     previous: <Icon variant='caret-right' {...iconCommonProps} />,
   };

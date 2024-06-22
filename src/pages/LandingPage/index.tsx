@@ -20,7 +20,7 @@ import { useUser } from '../../hooks';
 export function LandingPage() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const { about, highlights, isLoaded } = useUser();
+  const { about, highlights, banners, isLoaded } = useUser();
   const navigate = useNavigate();
 
   function navigateToProductPage(): void {
@@ -34,11 +34,13 @@ export function LandingPage() {
 
         {isLoaded ? (
           <>
-            <Carousel type='banner'>
-              <CarouselImage id='123' uri={PRIMARY_LOGO} />
-
-              <CarouselImage id='456' uri={SECONDARY_LOGO} />
-            </Carousel>
+            {banners.length > 0 && (
+              <Carousel type='banner'>
+                {banners.map(banner => (
+                  <CarouselImage id={banner.id} uri={banner.image.uri} />
+                ))}
+              </Carousel>
+            )}
 
             <section className='flex flex-col w-full justify-center items-center mb-4 py-10 px-4 gap-8 bg-primary'>
               <div className='flex flex-row flex-wrap w-full justify-center items-center gap-4'>

@@ -15,7 +15,7 @@ export function SearchInput(props: SearchInputProps) {
     setShowDropdown(false);
   }
 
-  const renderCategoryDropdown: JSX.Element = (
+  const renderCategoryDropdown: React.JSX.Element = (
     <div className='absolute top-[4.5rem] left-0 z-10 w-full sm:w-auto min-w-40 bg-primary rounded-lg shadow-default'>
       <ul className='py-2'>
         {categories.map(category => (

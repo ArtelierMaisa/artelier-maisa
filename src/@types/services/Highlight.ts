@@ -1,14 +1,10 @@
-interface ImageProps {
-  id: string;
-  name: string;
-  uri: string;
-}
+import { GenericImageProps } from './GenericImage';
 
 export interface Highlight {
   id: string;
   title: string;
   description: string;
-  image: ImageProps;
+  image: GenericImageProps;
   createdAt: number;
   removedAt: number;
 }
