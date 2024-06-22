@@ -13,8 +13,8 @@ export const flowbiteTheme: CustomFlowbiteTheme = {
     },
     indicators: {
       active: {
-        off: 'bg-primary60 hover:bg-primary dark:bg-primary60 dark:hover:bg-primary',
-        on: 'bg-primary dark:bg-primary',
+        off: 'bg-primary60 hover:bg-primary',
+        on: 'bg-primary',
       },
       base: 'h-5 w-5 rounded-full',
       wrapper: 'absolute bottom-8 left-1/2 flex -translate-x-1/2 space-x-4',
@@ -28,7 +28,7 @@ export const flowbiteTheme: CustomFlowbiteTheme = {
 
   navbar: {
     root: {
-      base: 'bg-primary px-5 dark:bg-primary',
+      base: 'bg-primary px-5',
       inner: {
         base: 'mx-auto flex flex-wrap items-center',
       },
@@ -40,12 +40,12 @@ export const flowbiteTheme: CustomFlowbiteTheme = {
 
   footer: {
     root: {
-      base: 'w-full rounded-none bg-background-color dark:bg-background-color md:flex',
+      base: 'w-full rounded-none bg-background-color md:flex',
       container: 'w-full h-auto p-6',
       bgDark: 'bg-background-color',
     },
     copyright: {
-      base: 'font-bold text-base text-text dark:text-text sm:text-center mr-1',
+      base: 'font-bold text-base text-text sm:text-center mr-1',
       href: 'ml-1',
       span: 'ml-1',
     },
@@ -63,7 +63,7 @@ export const flowbiteTheme: CustomFlowbiteTheme = {
 
   card: {
     root: {
-      base: 'flex rounded-lg bg-background-color dark:bg-background-color shadow-default',
+      base: 'flex rounded-lg bg-background-color shadow-default',
       children: 'flex h-full flex-col justify-center items-center gap-2 p-4',
       horizontal: {
         on: 'flex-col md:flex-row-reverse',
