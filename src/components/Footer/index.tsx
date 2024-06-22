@@ -39,7 +39,7 @@ export function Footer() {
           Plataforma desenvolvida em parceria com a{' '}
           <span className='inline-flex justify-center items-center text-base text-text font-normal gap-1'>
             <a
-              className='cursor-pointer underline'
+              className='cursor-pointer underline rounded focus:outline-none focus:ring focus:ring-text focus:border-text'
               href='https://www.univali.br/'
               target='_blank'
             >
@@ -51,7 +51,11 @@ export function Footer() {
         </Text>
 
         <div className='flex gap-4 sm:ml-3 sm:justify-center'>
-          <a href='https://www.facebook.com/artelier.maisa/' target='_blank'>
+          <a
+            className='rounded focus:outline-none focus:ring focus:ring-facebook focus:border-facebook'
+            href='https://www.facebook.com/artelier.maisa/'
+            target='_blank'
+          >
             <Icon
               variant='facebook-logo'
               color='facebook'
@@ -59,18 +63,28 @@ export function Footer() {
             />
           </a>
 
-          <a href='https://www.instagram.com/arteliermaisa/' target='_blank'>
+          <a
+            className='rounded focus:outline-none focus:ring focus:ring-text focus:border-text'
+            href='https://www.instagram.com/arteliermaisa/'
+            target='_blank'
+          >
             <Icon variant='instagram-logo' color='text' {...commonIconProps} />
           </a>
 
-          <Icon
-            variant='whatsapp-logo'
-            color='whatsapp'
+          <button
+            type='button'
+            className='rounded focus:outline-none focus:ring focus:ring-whatsapp focus:border-whatring-whatsapp'
             onClick={onSendWhatsAppMessage}
-            {...commonIconProps}
-          />
+          >
+            <Icon
+              variant='whatsapp-logo'
+              color='whatsapp'
+              {...commonIconProps}
+            />
+          </button>
 
           <a
+            className='rounded focus:outline-none focus:ring focus:ring-email focus:border-email'
             href={`mailto:${DEFAULT_EMAIL}?subject=Tenho interesse nos seus produtos!&body=Olá, tudo bem? Espero que sim! Estava olhando o seu site e resolvi entrar em contato, tenho interesse em seus produtos.`}
           >
             <Icon

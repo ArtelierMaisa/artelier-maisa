@@ -16,13 +16,13 @@ export function SearchInput(props: SearchInputProps) {
   }
 
   const renderCategoryDropdown: JSX.Element = (
-    <div className='absolute top-[4.5rem] left-0 z-10 w-full sm:w-auto min-w-40 bg-primary rounded-lg dark:bg-primary shadow-default'>
+    <div className='absolute top-[4.5rem] left-0 z-10 w-full sm:w-auto min-w-40 bg-primary rounded-lg shadow-default'>
       <ul className='py-2'>
         {categories.map(category => (
           <li key={category.id}>
             <button
               type='button'
-              className='inline-flex w-full justify-center sm:justify-start cursor-pointer px-4 py-2 hover:transition-opacity hover:duration-300 hover:opacity-80 dark:hover:opacity-80'
+              className='inline-flex w-full justify-center sm:justify-start cursor-pointer px-4 py-2 hover:transition-opacity hover:duration-300 hover:opacity-80'
               onClick={() => onSelectCategory(category)}
             >
               <Text color='background-color'>{category.name}</Text>
@@ -33,7 +33,7 @@ export function SearchInput(props: SearchInputProps) {
         <li key='none'>
           <button
             type='button'
-            className='inline-flex w-full justify-center sm:justify-start cursor-pointer px-4 py-2 hover:transition-opacity hover:duration-300 hover:opacity-80 dark:hover:opacity-80'
+            className='inline-flex w-full justify-center sm:justify-start cursor-pointer px-4 py-2 hover:transition-opacity hover:duration-300 hover:opacity-80'
             onClick={() => onSelectCategory(null)}
           >
             <Text color='background-color'>Sem Categoria</Text>
@@ -49,7 +49,7 @@ export function SearchInput(props: SearchInputProps) {
         <div className='flex relative'>
           <button
             type='button'
-            className='flex-shrink-0 z-10 min-w-40 hidden sm:inline-flex h-16 justify-center items-center gap-1 py-3 px-4 text-background-color bg-primary rounded-s-lg hover:opacity-90 dark:bg-primary dark:hover:opacity-90 dark:text-background-color'
+            className='flex-shrink-0 z-10 min-w-40 hidden sm:inline-flex h-16 justify-center items-center gap-1 py-3 px-4 text-background-color bg-primary  rounded-s-lg hover:opacity-90 focus:outline-none focus:ring focus:ring-primary60 focus:border-primary60'
             onClick={() => setShowDropdown(!showDropdown)}
           >
             <Text type='medium' color='background-color'>
@@ -67,7 +67,7 @@ export function SearchInput(props: SearchInputProps) {
             <input
               value={searchValue}
               type='search'
-              className='block w-full sm:w-96 md:w-[32rem] h-16 z-20 p-4 sm:p-2 sm:pr-16 rounded-lg sm:rounded-none bg-background-color text-primary font-normal text-base placeholder-primary60 border-transparent focus:border-transparent focus:ring-0 dark:bg-background-color dark:placeholder-primary60'
+              className='block w-full sm:w-96 md:w-[32rem] h-16 z-20 p-4 sm:p-2 sm:pr-16 rounded-lg sm:rounded-none bg-background-color text-primary font-normal text-base border-none placeholder-primary60 focus:outline-none focus:ring focus:ring-primary60 focus:border-primary60'
               placeholder='Buscar Produto'
               onChange={onChange}
               required
@@ -75,7 +75,7 @@ export function SearchInput(props: SearchInputProps) {
 
             <button
               type='button'
-              className='absolute top-0 end-0 hidden sm:flex w-16 h-16 justify-center items-center p-2 bg-primary rounded-e-lg hover:transition-opacity hover:duration-300 hover:opacity-90 dark:bg-primary dark:hover:opacity-90'
+              className='absolute top-0 end-0 hidden sm:flex w-16 h-16 justify-center items-center p-2 bg-primary rounded-e-lg hover:transition-opacity hover:duration-300 hover:opacity-90 focus:outline-none focus:ring focus:ring-primary60 focus:border-primary60'
               onClick={onSearch}
             >
               <Icon variant='magnifying-glass' color='background-color' />

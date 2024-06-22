@@ -27,7 +27,7 @@ export function Modal(props: ModalProps) {
       <div className='relative flex flex-col w-full md:w-[40rem] lg:w-[48rem] lg:h-auto overflow-hidden rounded-2xl bg-background-color shadow-default scrollbar scrollbar-w-3 scrollbar-thumb-rounded-lg scrollbar-thumb-primary scrollbar-track-background-color overflow-y-auto'>
         <button
           type='button'
-          className='absolute top-3 right-3 z-20 flex w-8 h-8 justify-center items-center bg-primary rounded-full shadow-default hover:opacity-60 transition-colors duration-300'
+          className='absolute top-3 right-3 z-20 flex w-8 h-8 justify-center items-center bg-primary rounded-full shadow-default hover:opacity-60 transition-colors duration-300 focus:outline-none focus:ring focus:ring-background-color focus:border-bacring-background-color'
           onClick={onClose}
         >
           <Icon variant='x' color='background-color' size='xx-small' />

@@ -41,10 +41,12 @@ export function GenericButton(props: GenericButtonProps) {
   const width = isHugWidth ? 'w-full' : 'w-auto';
   const cursor = isDisabled ? 'cursor-not-allowed' : 'cursor-pointer';
   const paddingY = `py-${type === 'small' ? 0 : 4}`;
+  const focusRingColor = `focus:ring-${variant === 'primary' ? 'primary60' : 'white'}`;
+  const focusBorderColor = `focus:border-${variant === 'primary' ? 'primary60' : 'white'}`;
 
   return (
     <button
-      className={`flex ${width} justify-center items-center ${genericButtonHeights[type]} px-6 ${paddingY} ${genericButtonBackgroundColors[variant]} rounded-lg ${cursor} hover:opacity-90 transition-colors duration-300 disabled:hover:opacity-100`}
+      className={`flex ${width} justify-center items-center ${genericButtonHeights[type]} px-6 ${paddingY} ${genericButtonBackgroundColors[variant]} rounded-lg ${cursor} hover:opacity-90 transition-colors duration-300 disabled:hover:opacity-100 focus:outline-none focus:ring ${focusRingColor} ${focusBorderColor}`}
       type='button'
       disabled={isDisabled}
       aria-disabled={isDisabled}
