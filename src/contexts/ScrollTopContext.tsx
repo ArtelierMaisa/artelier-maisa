@@ -20,6 +20,8 @@ export function ScrollTopProvider({ children }: Required<PropsWithChildren>) {
   const isProductPage = to === 'products';
 
   useEffect(() => {
+    if (!to && pathname === '/products') setTo('products');
+
     if (to && !isProductPage && pathname === '/') {
       scroller.scrollTo(to, {
         duration: to === 'events' ? 500 : 750,
