@@ -112,9 +112,11 @@ export function LandingPage() {
                       {about?.name}
                     </Text>
 
-                    <Text type='medium' toCenter>
-                      {about?.additional}
-                    </Text>
+                    {about?.additional && (
+                      <Text type='medium' toCenter>
+                        {about.additional}
+                      </Text>
+                    )}
                   </div>
 
                   <div className='flex flex-col w-full lg:w-2/3 justify-center items-center px-8 pt-8 lg:pt-0 py-2'>
