@@ -105,7 +105,7 @@ export function LandingPage() {
                     <img
                       src={about?.uri}
                       alt={`Foto de ${about?.name}`}
-                      className='w-60 h-60 rounded-full shadow-default'
+                      className='w-60 h-60 rounded-full shadow-default object-cover'
                     />
 
                     <Text type='medium' size='xl' toCenter>
