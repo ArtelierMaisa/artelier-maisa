@@ -44,7 +44,11 @@ export function LandingPage() {
             {banners.length > 0 && (
               <Carousel type='banner'>
                 {banners.map(banner => (
-                  <CarouselImage id={banner.id} uri={banner.image.uri} />
+                  <CarouselImage
+                    key={banner.id}
+                    id={banner.id}
+                    uri={banner.image.uri}
+                  />
                 ))}
               </Carousel>
             )}

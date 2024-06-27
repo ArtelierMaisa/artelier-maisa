@@ -6,6 +6,7 @@ interface ImageProps {
 
 export interface Product {
   id: string;
+  categoryId: string;
   name: string;
   description: string;
   isOccult: boolean;

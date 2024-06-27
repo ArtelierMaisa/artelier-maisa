@@ -4,7 +4,7 @@ import { SearchInputCategoryProps, SearchInputProps } from '../../@types';
 import { GenericButton, Icon, Text } from '../';
 
 export function SearchInput(props: SearchInputProps) {
-  const { categories, searchValue, onChange, onSearch } = props;
+  const { categories, searchValue, onChange, onSelect, onSearch } = props;
 
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const [categorySelected, setCategorySelected] =
@@ -12,6 +12,7 @@ export function SearchInput(props: SearchInputProps) {
 
   function onSelectCategory(category: SearchInputCategoryProps | null): void {
     setCategorySelected(category);
+    if (onSelect) onSelect(category);
     setShowDropdown(false);
   }
 
@@ -67,7 +68,7 @@ export function SearchInput(props: SearchInputProps) {
             <input
               value={searchValue}
               type='search'
-              className='block w-full sm:w-96 md:w-[32rem] h-16 z-20 p-4 sm:p-2 sm:pr-16 rounded-lg sm:rounded-none bg-background-color text-primary font-normal text-base border-none placeholder-primary60 focus:outline-none focus:ring focus:ring-primary60 focus:border-primary60'
+              className='block w-full h-16 z-20 p-4 sm:p-2 sm:pr-16 rounded-lg sm:rounded-none bg-background-color text-primary font-normal text-base border-none placeholder-primary60 focus:outline-none focus:ring-0 focus:border-none'
               placeholder='Buscar Produto'
               onChange={onChange}
               required
