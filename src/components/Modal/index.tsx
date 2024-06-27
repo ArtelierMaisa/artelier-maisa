@@ -21,7 +21,7 @@ export function Modal(props: ModalProps) {
       onRequestClose={onClose}
       shouldCloseOnEsc
       ariaHideApp={false}
-      overlayClassName='fixed inset-0 bg-text50 border-none'
+      overlayClassName='fixed inset-0 bg-text50 border-none z-30'
       className='flex flex-col w-full h-full justify-center items-center py-8'
     >
       <div className='relative flex flex-col w-full md:w-[40rem] lg:w-[48rem] lg:h-auto overflow-hidden rounded-2xl bg-background-color shadow-default scrollbar scrollbar-w-3 scrollbar-thumb-rounded-lg scrollbar-thumb-primary scrollbar-track-background-color overflow-y-auto'>
