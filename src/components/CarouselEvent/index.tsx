@@ -4,12 +4,11 @@ import { CarouselEventProps } from '../../@types';
 import { Text } from '../Text';
 
 export function CarouselEvent(props: CarouselEventProps) {
-  const { description, id, image, title } = props;
+  const { description, image, title } = props;
 
   return (
     <div className='flex w-full h-full justify-center items-center'>
       <Card
-        id={id}
         className='w-3/4 md:w-5/6 h-5/6 bg-background-color shadow-default'
         horizontal
         renderImage={() => (

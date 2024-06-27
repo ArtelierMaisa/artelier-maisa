@@ -9,10 +9,10 @@ export interface ProductProps {
   description: string;
   images: ProductImageProps[];
   price: string;
-  size?: string;
-  weight?: string;
-  material?: string;
-  whatsapp?: string;
+  material: string | null;
+  size: string | null;
+  weight: string | null;
+  whatsapp: string | null;
 }
 
 export interface ModalProps {
