@@ -34,9 +34,10 @@ export function Modal(props: ModalProps) {
         </button>
 
         <Carousel type='product'>
-          {product.images.map(image => (
-            <CarouselImage key={image.id} {...image} />
-          ))}
+          {product?.images &&
+            product.images.map(image => (
+              <CarouselImage key={image.id} {...image} />
+            ))}
         </Carousel>
 
         <div className='flex flex-col w-full h-auto items-center px-4 py-6 gap-2'>
@@ -60,7 +61,10 @@ export function Modal(props: ModalProps) {
             </div>
           )}
 
-          <WhatsAppButton product={product.title} phone={product.whatsapp} />
+          <WhatsAppButton
+            product={product.title}
+            phone={product.whatsapp || undefined}
+          />
         </div>
       </div>
     </ReactModal>

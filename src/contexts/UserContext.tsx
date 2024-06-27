@@ -1,4 +1,4 @@
-import { get, ref, remove } from 'firebase/database';
+import { get, onValue, ref, remove } from 'firebase/database';
 import {
   createContext,
   PropsWithChildren,
@@ -8,7 +8,15 @@ import {
 } from 'react';
 import { toast } from 'sonner';
 
-import { About, Banner, Highlight, UserContextProps } from '../@types';
+import {
+  About,
+  Banner,
+  Category,
+  Highlight,
+  Product,
+  UserContextProps,
+} from '../@types';
+import { categoryMapper } from '../helpers';
 import { database } from '../services';
 import { mapper } from '../utils';
 
@@ -20,6 +28,8 @@ export function UserProvider({ children }: Required<PropsWithChildren>) {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [highlights, setHighlights] = useState<Highlight[]>([]);
   const [banners, setBanners] = useState<Banner[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [about, setAbout] = useState<About>({} as About);
 
   function isGreaterThanPeriodRemove(highlight: Highlight): boolean {
@@ -85,6 +95,10 @@ export function UserProvider({ children }: Required<PropsWithChildren>) {
     setBanners(bannersFirebase);
   }, []);
 
+  function sortProducts(product: Product, productCompare: Product): number {
+    return productCompare.createdAt - product.createdAt;
+  }
+
   const fetchFirebase = useCallback(async () => {
     await handleGetBanners();
     await handleGetHighlights();
@@ -97,8 +111,36 @@ export function UserProvider({ children }: Required<PropsWithChildren>) {
     fetchFirebase();
   }, [fetchFirebase]);
 
+  useEffect(() => {
+    const categoriesRef = ref(database, 'categories');
+
+    const unsubscribe = onValue(categoriesRef, categoriesSnapshot => {
+      if (!categoriesSnapshot.val()) {
+        setProducts([]);
+        setCategories([]);
+        return;
+      }
+
+      const products: Product[] = [];
+      const categoriesMapped = categoryMapper<Category[]>(categoriesSnapshot);
+      categoriesMapped.forEach(category => products.push(...category.products));
+      const productsAvailable = products
+        .filter(product => !product.isOccult)
+        .sort(sortProducts);
+
+      setProducts(productsAvailable);
+      setCategories(categoriesMapped);
+    });
+
+    () => {
+      unsubscribe();
+    };
+  }, []);
+
   return (
-    <UserContext.Provider value={{ about, highlights, banners, isLoaded }}>
+    <UserContext.Provider
+      value={{ about, highlights, banners, categories, products, isLoaded }}
+    >
       {children}
     </UserContext.Provider>
   );

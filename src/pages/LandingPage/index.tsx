@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Element } from 'react-scroll';
 
+import { Product } from '../../@types';
 import {
   Carousel,
   CarouselEvent,
@@ -14,18 +15,24 @@ import {
   Spinner,
   Text,
 } from '../../components';
-import { PRIMARY_LOGO, SECONDARY_LOGO } from '../../config';
 import { useUser } from '../../hooks';
 
 export function LandingPage() {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [productSelected, setProductSelected] = useState<Product>(
+    {} as Product,
+  );
 
-  const { about, highlights, banners, isLoaded } = useUser();
+  const { about, highlights, banners, products, isLoaded } = useUser();
   const navigate = useNavigate();
 
   function navigateToProductPage(): void {
     navigate('/products');
   }
+
+  const [firstProduct, secondProduct, threeProduct] = products;
+  const firstThreeProducts = [firstProduct, secondProduct, threeProduct].filter(
+    product => product,
+  );
 
   return (
     <>
@@ -42,42 +49,29 @@ export function LandingPage() {
               </Carousel>
             )}
 
-            <section className='flex flex-col w-full justify-center items-center mb-4 py-10 px-4 gap-8 bg-primary'>
-              <div className='flex flex-row flex-wrap w-full justify-center items-center gap-4'>
-                <ProductCard
-                  id='123'
-                  image={PRIMARY_LOGO}
-                  name='Lorem ipsum dolor'
-                  price='R$ 49,90'
-                  description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis commodi sit soluta, similique amet molestias tenetur dolorem non unde temporibus aut numquam nesciunt enim nisi nobis qui, officiis laudantium! Unde! Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis commodi sit soluta, similique amet molestias tenetur dolorem non unde temporibus aut numquam nesciunt enim nisi nobis qui, officiis laudantium! Unde!'
-                  onSeeMore={() => setIsOpen(true)}
-                />
+            {firstThreeProducts.length > 0 && (
+              <section className='flex flex-col w-full justify-center items-center mb-4 py-10 px-4 gap-8 bg-primary'>
+                <div className='flex flex-row flex-wrap w-full justify-center items-center gap-4'>
+                  {firstThreeProducts.map(product => (
+                    <ProductCard
+                      key={product.id}
+                      id={product.id}
+                      image={product.images[0].uri}
+                      name={product.name}
+                      price={product.price}
+                      description={product.description}
+                      onSeeMore={() => setProductSelected(product)}
+                    />
+                  ))}
+                </div>
 
-                <ProductCard
-                  id='456'
-                  image={SECONDARY_LOGO}
-                  name='Lorem ipsum dolor'
-                  price='R$ 49,90'
-                  description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis commodi sit soluta, similique amet molestias tenetur dolorem non unde temporibus aut numquam nesciunt enim nisi nobis qui, officiis laudantium! Unde! Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis commodi sit soluta, similique amet molestias tenetur dolorem non unde temporibus aut numquam nesciunt enim nisi nobis qui, officiis laudantium! Unde!'
-                  onSeeMore={() => setIsOpen(true)}
+                <GenericButton
+                  title='Conheça Nossos Produtos'
+                  variant='secondary'
+                  onClick={navigateToProductPage}
                 />
-
-                <ProductCard
-                  id='789'
-                  image={PRIMARY_LOGO}
-                  name='Lorem ipsum dolor'
-                  price='R$ 49,90'
-                  description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis commodi sit soluta, similique amet molestias tenetur dolorem non unde temporibus aut numquam nesciunt enim nisi nobis qui, officiis laudantium! Unde! Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis commodi sit soluta, similique amet molestias tenetur dolorem non unde temporibus aut numquam nesciunt enim nisi nobis qui, officiis laudantium! Unde!'
-                  onSeeMore={() => setIsOpen(true)}
-                />
-              </div>
-
-              <GenericButton
-                title='Conheça Nossos Produtos'
-                variant='secondary'
-                onClick={navigateToProductPage}
-              />
-            </section>
+              </section>
+            )}
 
             {highlights.length > 0 && (
               <Element name='events'>
@@ -142,23 +136,9 @@ export function LandingPage() {
       </main>
 
       <Modal
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-        product={{
-          description:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis commodi sit soluta, similique amet molestias tenetur dolorem non unde temporibus aut numquam nesciunt enim nisi nobis qui, officiis laudantium! Unde! Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis commodi sit soluta, similique amet molestias tenetur dolorem non unde temporibus aut numquam nesciunt enim nisi nobis qui, officiis laudantium! Unde!',
-          id: '123',
-          images: [
-            { id: '123', uri: PRIMARY_LOGO },
-            { id: '456', uri: SECONDARY_LOGO },
-          ],
-          price: 'R$ 49,90',
-          size: '20cmx15cm',
-          title: 'Enfeite de Páscoa',
-          weight: '50kg',
-          material: 'Madeira',
-          whatsapp: '5547996507698',
-        }}
+        isOpen={!!productSelected?.id}
+        onClose={() => setProductSelected({} as Product)}
+        product={{ ...productSelected, title: productSelected.name }}
       />
     </>
   );
