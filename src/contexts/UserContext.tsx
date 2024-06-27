@@ -123,7 +123,9 @@ export function UserProvider({ children }: Required<PropsWithChildren>) {
 
       const products: Product[] = [];
       const categoriesMapped = categoryMapper<Category[]>(categoriesSnapshot);
-      categoriesMapped.forEach(category => products.push(...category.products));
+      categoriesMapped.forEach(category => {
+        if (category?.products) products.push(...category.products);
+      });
       const productsAvailable = products
         .filter(product => !product.isOccult)
         .sort(sortProducts);
