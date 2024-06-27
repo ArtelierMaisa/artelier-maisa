@@ -28,7 +28,7 @@ export function Footer() {
         />
 
         <div className='flex flex-col sm:flex-row items-center sm:items-center gap-1'>
-          <Text type='semibold'>Todos os Direitos Revervados.</Text>
+          <Text type='semibold'>Todos os Direitos Reservados.</Text>
 
           <Text>Versão {version}.</Text>
         </div>
