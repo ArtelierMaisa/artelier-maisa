@@ -36,7 +36,7 @@ export function Footer() {
 
       <div className='flex flex-1 flex-wrap gap-1 justify-center items-center md:justify-end'>
         <Text className='text-center sm:text-right'>
-          Plataforma desenvolvida em parceria com a{' '}
+          Projeto de extensão desenvolvido na{' '}
           <span className='inline-flex justify-center items-center text-base text-text font-normal gap-1'>
             <a
               className='cursor-pointer underline rounded focus:outline-none focus:ring focus:ring-text focus:border-text'
