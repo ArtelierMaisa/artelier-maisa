@@ -34,10 +34,10 @@ export function Products() {
 
     const productsSelected = searchValue.trim()
       ? allProductsOfTheCategory.filter(product =>
-          searchValue
+          product.name
             .trim()
             .toLowerCase()
-            .includes(product.name.trim().toLowerCase()),
+            .includes(searchValue.trim().toLowerCase()),
         )
       : allProductsOfTheCategory;
 
@@ -50,11 +50,6 @@ export function Products() {
     if (!category) return setCategorySelected(null);
     setCategorySelected(categories.find(({ id }) => id === category.id)!);
   }
-
-  useEffect(() => {
-    if (productsFirebase.length) setProducts(productsFirebase);
-    else setProducts([]);
-  }, [productsFirebase]);
 
   useEffect(() => {
     if (!searchValue) handleSearchProducts();
