@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 
 import { SearchInputCategoryProps, SearchInputProps } from '../../@types';
 import { GenericButton, Icon, Text } from '../';
 
-export function SearchInput(props: SearchInputProps) {
+function SearchInput(props: SearchInputProps) {
   const { categories, searchValue, onChange, onSelect, onSearch } = props;
 
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
@@ -101,3 +101,5 @@ export function SearchInput(props: SearchInputProps) {
     </div>
   );
 }
+
+export default memo(SearchInput);

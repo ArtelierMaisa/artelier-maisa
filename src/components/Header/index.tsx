@@ -1,12 +1,13 @@
 import { Navbar } from 'flowbite-react';
+import { memo } from 'react';
 import { Link } from 'react-scroll';
 
 import { TextProps } from '../../@types';
 import { PRIMARY_LOGO } from '../../config';
 import { useScrollTop, useUser } from '../../hooks';
-import { Text } from '../Text';
+import { Text } from '../';
 
-export function Header() {
+function Header() {
   const { highlights } = useUser();
   const { handleTo, to } = useScrollTop();
 
@@ -87,3 +88,5 @@ export function Header() {
     </Navbar>
   );
 }
+
+export default memo(Header);

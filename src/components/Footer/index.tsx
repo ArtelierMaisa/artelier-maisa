@@ -1,4 +1,5 @@
 import { Footer as FlowbiteFooter } from 'flowbite-react';
+import { memo } from 'react';
 
 import packageJson from '../../../package.json';
 import { IconProps } from '../../@types';
@@ -6,7 +7,7 @@ import { DEFAULT_EMAIL } from '../../config';
 import { sendMessage } from '../../utils';
 import { Icon, Text } from '../';
 
-export function Footer() {
+function Footer() {
   const version = packageJson.version;
   const currentYear = new Date().getFullYear();
 
@@ -98,3 +99,5 @@ export function Footer() {
     </FlowbiteFooter>
   );
 }
+
+export default memo(Footer);

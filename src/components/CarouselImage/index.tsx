@@ -1,6 +1,8 @@
+import { memo } from 'react';
+
 import { CarouselImageProps } from '../../@types';
 
-export function CarouselImage(props: CarouselImageProps) {
+function CarouselImage(props: CarouselImageProps) {
   const { id, uri } = props;
 
   return (
@@ -12,3 +14,5 @@ export function CarouselImage(props: CarouselImageProps) {
     />
   );
 }
+
+export default memo(CarouselImage);

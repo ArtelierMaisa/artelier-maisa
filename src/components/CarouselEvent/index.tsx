@@ -1,9 +1,10 @@
 import { Card } from 'flowbite-react';
+import { memo } from 'react';
 
 import { CarouselEventProps } from '../../@types';
-import { Text } from '../Text';
+import { Text } from '../';
 
-export function CarouselEvent(props: CarouselEventProps) {
+function CarouselEvent(props: CarouselEventProps) {
   const { description, image, title } = props;
 
   return (
@@ -36,3 +37,5 @@ export function CarouselEvent(props: CarouselEventProps) {
     </div>
   );
 }
+
+export default memo(CarouselEvent);

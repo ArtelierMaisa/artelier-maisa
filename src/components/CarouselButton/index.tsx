@@ -1,11 +1,13 @@
+import { memo } from 'react';
+
 import {
   CarouselButtonProps,
   CarouselButtonType,
   IconProps,
 } from '../../@types';
-import { Icon } from '../Icon';
+import { Icon } from '../';
 
-export function CarouselButton(props: CarouselButtonProps) {
+function CarouselButton(props: CarouselButtonProps) {
   const { type } = props;
 
   const isNext = type === 'next';
@@ -30,3 +32,5 @@ export function CarouselButton(props: CarouselButtonProps) {
     </>
   );
 }
+
+export default memo(CarouselButton);

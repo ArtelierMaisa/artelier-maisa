@@ -1,10 +1,10 @@
 import { Card } from 'flowbite-react';
+import { memo } from 'react';
 
 import { ProductCardProps } from '../../@types';
-import { GenericButton } from '../GenericButton';
-import { Text } from '../Text';
+import { GenericButton, Text } from '../';
 
-export function ProductCard(props: ProductCardProps) {
+function ProductCard(props: ProductCardProps) {
   const { id, name, description, price, image, onSeeMore } = props;
 
   return (
@@ -40,3 +40,5 @@ export function ProductCard(props: ProductCardProps) {
     </Card>
   );
 }
+
+export default memo(ProductCard);

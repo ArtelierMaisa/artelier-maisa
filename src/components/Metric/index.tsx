@@ -1,8 +1,10 @@
+import { memo } from 'react';
+
 import { MetricProps } from '../../@types';
 import { metricsVariants } from '../../constants';
-import { Text } from '../Text';
+import { Text } from '../';
 
-export function Metric(props: MetricProps) {
+function Metric(props: MetricProps) {
   const { value, variant = 'material' } = props;
 
   return (
@@ -33,3 +35,5 @@ export function Metric(props: MetricProps) {
     </div>
   );
 }
+
+export default memo(Metric);

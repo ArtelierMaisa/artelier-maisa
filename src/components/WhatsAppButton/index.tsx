@@ -1,9 +1,11 @@
+import { memo } from 'react';
+
 import { WhatsAppButtonProps } from '../../@types';
 import { DEFAULT_PHONE } from '../../config';
 import { sendMessage } from '../../utils';
 import { Icon, Text } from '../';
 
-export function WhatsAppButton(props: WhatsAppButtonProps) {
+function WhatsAppButton(props: WhatsAppButtonProps) {
   const { product, phone = DEFAULT_PHONE } = props;
 
   function onSendWhatsAppMessage(): void {
@@ -29,3 +31,5 @@ export function WhatsAppButton(props: WhatsAppButtonProps) {
     </button>
   );
 }
+
+export default memo(WhatsAppButton);
