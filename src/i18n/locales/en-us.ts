@@ -18,5 +18,9 @@ export const enUs = {
         "Don't worry, we have lots of amazing products waiting for you! Go back to the home page or use the search bar to find what you're looking for.",
       buttonTitle: 'Go back to the Home Page',
     },
+
+    spinner: {
+      loading: 'Loading...',
+    },
   },
 };

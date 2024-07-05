@@ -18,5 +18,9 @@ export const ptBr = {
         'Não se preocupe, temos muitos produtos incríveis esperando por você! Volte para a página inicial ou use a barra de busca para encontrar o que procura.',
       buttonTitle: 'Voltar ao Início',
     },
+
+    spinner: {
+      loading: 'Carregando...',
+    },
   },
 };
