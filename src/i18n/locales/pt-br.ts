@@ -1,7 +1,8 @@
 export const ptBr = {
   translations: {
-    home: {
-      message: 'Olá Mundo!',
+    landingPage: {
+      aboutTitle: 'Sobre a Maisa',
+      loading: 'Preparando algo especial para você...',
     },
   },
 };

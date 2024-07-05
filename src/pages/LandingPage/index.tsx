@@ -14,6 +14,7 @@ import {
   ProductCard,
   Spinner,
   Text,
+  Translator,
 } from '../../components';
 import { useUser } from '../../hooks';
 
@@ -96,7 +97,7 @@ export function LandingPage() {
             <Element name='about'>
               <section className='flex flex-col mt-3 mb-6 bg-transparent'>
                 <Text type='semibold' size='2xl' toCenter>
-                  Sobre a Maisa
+                  <Translator path='landingPage.aboutTitle' />
                 </Text>
 
                 <div className='flex flex-row flex-wrap justify-center items-center mt-8'>
@@ -130,7 +131,7 @@ export function LandingPage() {
         ) : (
           <div className='flex flex-col w-full h-full gap-2 justify-center items-center'>
             <Text color='primary' type='medium' toCenter>
-              Preparando algo especial para você...
+              <Translator path='landingPage.loading' />
             </Text>
 
             <Spinner />
