@@ -15,6 +15,7 @@ import {
   SearchInput,
   Spinner,
   Text,
+  Translator,
 } from '../../components';
 import { useUser } from '../../hooks';
 
@@ -99,7 +100,7 @@ export function Products() {
             ) : (
               <div className='flex flex-col flex-1 w-full h-full justify-center items-center m-auto p-12 gap-1'>
                 <Text type='medium' size='xl' color='primary' toCenter>
-                  Não há produtos disponíveis
+                  <Translator path='products.noProductsAvailable' />
                 </Text>
 
                 <Icon variant='smiley-sad' color='primary' size='medium' />
@@ -109,7 +110,7 @@ export function Products() {
         ) : (
           <div className='flex flex-col w-full h-full gap-2 justify-center items-center'>
             <Text color='primary' type='medium' toCenter>
-              Preparando nossos lindos produtos para você...
+              <Translator path='products.loading' />
             </Text>
 
             <Spinner />
