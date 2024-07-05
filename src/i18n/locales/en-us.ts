@@ -19,6 +19,11 @@ export const enUs = {
       buttonTitle: 'Go back to the Home Page',
     },
 
+    userContext: {
+      genericError:
+        'Failed to fetch your information! Something went wrong while searching for information. Please try again. If the problem persists, contact technical support.',
+    },
+
     spinner: {
       loading: 'Loading...',
     },

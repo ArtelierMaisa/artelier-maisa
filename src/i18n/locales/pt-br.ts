@@ -19,6 +19,11 @@ export const ptBr = {
       buttonTitle: 'Voltar ao Início',
     },
 
+    userContext: {
+      genericError:
+        'Falha ao buscar suas informações! Algo deu errado durante a busca de informações. Por favor, tente novamente. Se o problema persistir, entre em contato com o suporte técnico.',
+    },
+
     spinner: {
       loading: 'Carregando...',
     },

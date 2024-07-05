@@ -10,6 +10,7 @@ import {
   Product,
   UserContextProps,
 } from '../@types';
+import { Translator } from '../components';
 import { categoryMapper } from '../helpers';
 import { database } from '../services';
 import { mapper } from '../utils';
@@ -34,10 +35,9 @@ export function UserProvider({ children }: Required<PropsWithChildren>) {
   }
 
   function handleGenericErrorToast(): void {
-    toast.error(
-      'Falha ao buscar suas informações! Algo deu errado durante a busca de informações. Por favor, tente novamente. Se o problema persistir, entre em contato com o suporte técnico.',
-      { duration: 7500 },
-    );
+    toast.error(<Translator path='userContext.genericError' />, {
+      duration: 7500,
+    });
   }
 
   useEffect(() => {
