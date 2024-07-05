@@ -37,7 +37,7 @@ function Modal(props: ModalProps) {
         <Carousel type='product'>
           {product?.images &&
             product.images.map(image => (
-              <CarouselImage key={image.id} {...image} />
+              <CarouselImage key={image.id} name={image.name} uri={image.uri} />
             ))}
         </Carousel>
 

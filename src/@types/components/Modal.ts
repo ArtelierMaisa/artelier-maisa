@@ -1,6 +1,7 @@
 export interface ProductImageProps {
   id: string;
   uri: string;
+  name: string;
 }
 
 export interface ProductProps {

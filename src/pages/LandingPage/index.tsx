@@ -48,8 +48,8 @@ export function LandingPage() {
                 {banners.map(banner => (
                   <CarouselImage
                     key={banner.id}
-                    id={banner.id}
                     uri={banner.image.uri}
+                    name={banner.image.name}
                   />
                 ))}
               </Carousel>

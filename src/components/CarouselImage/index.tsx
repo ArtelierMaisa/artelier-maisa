@@ -3,13 +3,12 @@ import { memo } from 'react';
 import { CarouselImageProps } from '../../@types';
 
 function CarouselImage(props: CarouselImageProps) {
-  const { id, uri } = props;
+  const { name, uri } = props;
 
   return (
     <img
-      key={id}
       src={uri}
-      alt='Imagem do Carousel'
+      alt={name}
       className='w-full h-full max-w-full rounded-none object-cover'
     />
   );
