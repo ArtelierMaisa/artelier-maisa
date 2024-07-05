@@ -6,7 +6,7 @@ import { PRIMARY_LOGO } from '../../config';
 export function NotFound() {
   const navigate = useNavigate();
 
-  function goToLandingPage(): void {
+  function navigateToLandingPage(): void {
     navigate('/');
   }
 
@@ -31,7 +31,10 @@ export function NotFound() {
           que procura.
         </Text>
 
-        <GenericButton title='Voltar ao Início' onClick={goToLandingPage} />
+        <GenericButton
+          title='Voltar ao Início'
+          onClick={navigateToLandingPage}
+        />
       </main>
     </div>
   );

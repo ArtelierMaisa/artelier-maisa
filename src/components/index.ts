@@ -12,6 +12,7 @@ import ProductCard from './ProductCard';
 import SearchInput from './SearchInput';
 import Spinner from './Spinner';
 import Text from './Text';
+import Translator from './Translator';
 import WhatsAppButton from './WhatsAppButton';
 
 export {
@@ -29,5 +30,6 @@ export {
   SearchInput,
   Spinner,
   Text,
+  Translator,
   WhatsAppButton,
 };

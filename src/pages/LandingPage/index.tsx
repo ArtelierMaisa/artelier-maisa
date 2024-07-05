@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Element } from 'react-scroll';
 
-import { Product } from '../../@types';
+import { Product, ProductProps } from '../../@types';
 import {
   Carousel,
   CarouselEvent,
@@ -18,14 +18,12 @@ import {
 import { useUser } from '../../hooks';
 
 export function LandingPage() {
-  const [productSelected, setProductSelected] = useState<Product>(
-    {} as Product,
-  );
+  const [productSelected, setProductSelected] = useState<Product | null>(null);
 
   const { about, highlights, banners, products, isLoaded } = useUser();
   const navigate = useNavigate();
 
-  function navigateToProductPage(): void {
+  function navigateToProductsPage(): void {
     navigate('/products');
   }
 
@@ -33,6 +31,9 @@ export function LandingPage() {
   const firstThreeProducts = [firstProduct, secondProduct, threeProduct].filter(
     product => product,
   );
+  const productUsedByModal: ProductProps = productSelected
+    ? { ...productSelected, title: productSelected.name }
+    : ({} as ProductProps);
 
   return (
     <>
@@ -72,7 +73,7 @@ export function LandingPage() {
                 <GenericButton
                   title='Conheça Nossos Produtos'
                   variant='secondary'
-                  onClick={navigateToProductPage}
+                  onClick={navigateToProductsPage}
                 />
               </section>
             )}
@@ -140,9 +141,9 @@ export function LandingPage() {
       </main>
 
       <Modal
-        isOpen={!!productSelected?.id}
-        onClose={() => setProductSelected({} as Product)}
-        product={{ ...productSelected, title: productSelected.name }}
+        isOpen={!!productSelected}
+        onClose={() => setProductSelected(null)}
+        product={productUsedByModal}
       />
     </>
   );

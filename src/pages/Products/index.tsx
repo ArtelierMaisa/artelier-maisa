@@ -1,6 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { Category, Product, SearchInputCategoryProps } from '../../@types';
+import {
+  Category,
+  Product,
+  ProductProps,
+  SearchInputCategoryProps,
+} from '../../@types';
 import {
   Footer,
   Header,
@@ -18,9 +23,7 @@ export function Products() {
 
   const [searchValue, setSearchValue] = useState<string>('');
   const [products, setProducts] = useState<Product[]>(productsFirebase);
-  const [productSelected, setProductSelected] = useState<Product>(
-    {} as Product,
-  );
+  const [productSelected, setProductSelected] = useState<Product | null>(null);
   const [categorySelected, setCategorySelected] = useState<Category | null>(
     null,
   );
@@ -48,8 +51,15 @@ export function Products() {
     category: SearchInputCategoryProps | null,
   ): void {
     if (!category) return setCategorySelected(null);
-    setCategorySelected(categories.find(({ id }) => id === category.id)!);
+
+    const foundCategory = categories.find(({ id }) => id === category.id);
+    if (!foundCategory) return setCategorySelected(null);
+    setCategorySelected(foundCategory);
   }
+
+  const productUsedByModal: ProductProps = productSelected
+    ? { ...productSelected, title: productSelected.name }
+    : ({} as ProductProps);
 
   useEffect(() => {
     if (!searchValue) handleSearchProducts();
@@ -110,9 +120,9 @@ export function Products() {
       </main>
 
       <Modal
-        isOpen={!!productSelected?.id}
-        onClose={() => setProductSelected({} as Product)}
-        product={{ ...productSelected, title: productSelected.name }}
+        isOpen={!!productSelected}
+        onClose={() => setProductSelected(null)}
+        product={productUsedByModal}
       />
     </>
   );

@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { FormEvent, memo, useState } from 'react';
 
 import { SearchInputCategoryProps, SearchInputProps } from '../../@types';
 import { GenericButton, Icon, Text } from '../';
@@ -14,6 +14,12 @@ function SearchInput(props: SearchInputProps) {
     setCategorySelected(category);
     if (onSelect) onSelect(category);
     setShowDropdown(false);
+  }
+
+  function onSubmit(event: FormEvent<HTMLFormElement>): void {
+    event.preventDefault();
+
+    if (onSearch) onSearch();
   }
 
   const renderCategoryDropdown: React.JSX.Element = (
@@ -46,7 +52,10 @@ function SearchInput(props: SearchInputProps) {
 
   return (
     <div className='flex flex-col w-full items-center gap-2'>
-      <form className='w-full max-w-[46rem] rounded-lg sm:rounded-none shadow-default'>
+      <form
+        onSubmit={onSubmit}
+        className='w-full max-w-[46rem] rounded-lg sm:rounded-none shadow-default'
+      >
         <div className='flex relative'>
           <button
             type='button'
@@ -71,7 +80,6 @@ function SearchInput(props: SearchInputProps) {
               className='block w-full h-16 z-20 p-4 sm:p-2 sm:pr-16 rounded-lg sm:rounded-none bg-background-color text-primary font-normal text-base border-none placeholder-primary60 focus:outline-none focus:ring-0 focus:border-none'
               placeholder='Buscar Produto'
               onChange={onChange}
-              required
             />
 
             <button
