@@ -34,6 +34,8 @@ export const enUs = {
       productsPage: 'Products',
       aboutSection: 'About the Maisa',
       eventsSection: 'Events',
+      brazil: 'Brazil',
+      unitedStates: 'United States',
       artelierByMaisa: 'Artelier by Maisa',
     },
 
@@ -41,6 +43,11 @@ export const enUs = {
       material: 'Material',
       size: 'Size',
       weight: 'Weight',
+    },
+
+    productCard: {
+      seeMore: 'See more',
+      by: 'By',
     },
 
     spinner: {

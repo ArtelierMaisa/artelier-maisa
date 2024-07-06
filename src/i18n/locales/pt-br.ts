@@ -34,6 +34,8 @@ export const ptBr = {
       productsPage: 'Produtos',
       aboutSection: 'Sobre a Maisa',
       eventsSection: 'Divulgações',
+      brazil: 'Brasil',
+      unitedStates: 'Estados Unidos',
       artelierByMaisa: 'Artelier by Maisa',
     },
 
@@ -41,6 +43,11 @@ export const ptBr = {
       material: 'Material',
       size: 'Tamanho',
       weight: 'Peso',
+    },
+
+    productCard: {
+      seeMore: 'Ver mais',
+      by: 'Por',
     },
 
     spinner: {

@@ -1,23 +1,27 @@
 import { Card } from 'flowbite-react';
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { ProductCardProps } from '../../@types';
-import { GenericButton, Text } from '../';
+import { GenericButton, Text, Translator } from '../';
 
 function ProductCard(props: ProductCardProps) {
-  const { id, name, description, price, image, onSeeMore } = props;
+  const { name, description, price, image, onSeeMore } = props;
+
+  const { t } = useTranslation();
+
+  const renderImage: React.JSX.Element = (
+    <img
+      src={image}
+      alt={name}
+      className='w-full h-[21.75rem] object-cover rounded-tl-lg rounded-tr-lg'
+    />
+  );
 
   return (
     <Card
-      id={id}
       className='max-w-[25rem] max-h-[33.75rem] bg-background-color shadow-default'
-      renderImage={() => (
-        <img
-          className='w-full h-[21.75rem] object-cover rounded-tl-lg rounded-tr-lg'
-          src={image}
-          alt={`Image do Produto ${name}`}
-        />
-      )}
+      renderImage={() => renderImage}
     >
       <Text type='semibold' size='xl' toCenter>
         {name}
@@ -28,10 +32,14 @@ function ProductCard(props: ProductCardProps) {
       </div>
 
       <div className='flex flex-row w-full justify-between items-center'>
-        <GenericButton title='Ver mais' type='small' onClick={onSeeMore} />
+        <GenericButton
+          title={t('productCard.seeMore')}
+          type='small'
+          onClick={onSeeMore}
+        />
 
         <Text type='medium' className='text-base sm:text-xl'>
-          Por{' '}
+          <Translator path='productCard.by' />{' '}
           <span className='inline text-text font-bold sm:text-semibold text-base sm:text-xl'>
             {price}
           </span>
