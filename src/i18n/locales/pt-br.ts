@@ -3,6 +3,7 @@ export const ptBr = {
     landingPage: {
       aboutTitle: 'Sobre a Maisa',
       loading: 'Preparando algo especial para você...',
+      ourProducts: 'Conheça Nossos Produtos',
     },
 
     products: {

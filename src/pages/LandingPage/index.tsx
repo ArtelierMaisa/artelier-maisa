@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Element } from 'react-scroll';
 
@@ -22,6 +23,7 @@ export function LandingPage() {
   const [productSelected, setProductSelected] = useState<Product | null>(null);
 
   const { about, highlights, banners, products, isLoaded } = useUser();
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   function navigateToProductsPage(): void {
@@ -71,7 +73,7 @@ export function LandingPage() {
                 </div>
 
                 <GenericButton
-                  title='Conheça Nossos Produtos'
+                  title={t('ourProducts')}
                   variant='secondary'
                   onClick={navigateToProductsPage}
                 />
@@ -103,7 +105,7 @@ export function LandingPage() {
                   <div className='flex flex-col w-full lg:w-1/3 justify-center items-center gap-4 lg:border-r-[1px] border-b-[1px] lg:border-b-0 border-r-primary border-b-primary px-8 pb-8 lg:pb-0 py-2'>
                     <img
                       src={about?.uri}
-                      alt={`Foto de ${about?.name}`}
+                      alt={about?.name}
                       className='w-60 h-60 rounded-full shadow-default object-cover'
                     />
 

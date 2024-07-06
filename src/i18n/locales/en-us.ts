@@ -3,6 +3,7 @@ export const enUs = {
     landingPage: {
       aboutTitle: 'About the Maisa',
       loading: 'Preparing special something for you...',
+      ourProducts: 'Met Our Products',
     },
 
     products: {
