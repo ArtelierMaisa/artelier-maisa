@@ -99,7 +99,7 @@ export function Products() {
             ) : (
               <div className='flex flex-col flex-1 w-full h-full justify-center items-center m-auto p-12 gap-1'>
                 <Text type='medium' size='xl' color='primary' toCenter>
-                  <Translator path='products.noProductsAvailable' />
+                  <Translator path='products.withoutProductsAvailable' />
                 </Text>
 
                 <Icon variant='smiley-sad' color='primary' size='medium' />

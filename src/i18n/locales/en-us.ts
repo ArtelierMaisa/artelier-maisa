@@ -6,7 +6,7 @@ export const enUs = {
     },
 
     products: {
-      noProductsAvailable: 'There are no products available',
+      withoutProductsAvailable: 'There are no products available',
       loading: 'Preparing our pretty products for you...',
     },
 
@@ -48,6 +48,14 @@ export const enUs = {
     productCard: {
       seeMore: 'See more',
       by: 'By',
+    },
+
+    searchInput: {
+      withoutCategory: 'Without Category',
+      categoryLabel: 'Categories',
+      inputPlaceholder: 'Search Product',
+      buttonLabel: 'Search',
+      buttonTitle: 'Search',
     },
 
     spinner: {

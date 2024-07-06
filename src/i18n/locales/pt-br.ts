@@ -6,7 +6,7 @@ export const ptBr = {
     },
 
     products: {
-      noProductsAvailable: 'Não há produtos disponíveis',
+      withoutProductsAvailable: 'Não há produtos disponíveis',
       loading: 'Preparando nossos lindos produtos para você...',
     },
 
@@ -48,6 +48,14 @@ export const ptBr = {
     productCard: {
       seeMore: 'Ver mais',
       by: 'Por',
+    },
+
+    searchInput: {
+      withoutCategory: 'Sem Categoria',
+      categoryLabel: 'Categorias',
+      inputPlaceholder: 'Buscar Produto',
+      buttonLabel: 'Pesquisar',
+      buttonTitle: 'Pesquisar',
     },
 
     spinner: {
