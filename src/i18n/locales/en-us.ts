@@ -29,6 +29,14 @@ export const enUs = {
       previous: 'Previous',
     },
 
+    header: {
+      logo: 'Artelier Maisa Logo',
+      productsPage: 'Products',
+      aboutSection: 'About the Maisa',
+      eventsSection: 'Events',
+      artelierByMaisa: 'Artelier by Maisa',
+    },
+
     metric: {
       material: 'Material',
       size: 'Size',

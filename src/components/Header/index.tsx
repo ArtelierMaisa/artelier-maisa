@@ -1,15 +1,17 @@
 import { Navbar } from 'flowbite-react';
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-scroll';
 
 import { TextProps } from '../../@types';
 import { PRIMARY_LOGO } from '../../config';
 import { useScrollTop, useUser } from '../../hooks';
-import { Text } from '../';
+import { Text, Translator } from '../';
 
 function Header() {
   const { highlights } = useUser();
   const { handleTo, to } = useScrollTop();
+  const { t } = useTranslation();
 
   const commonTextProps: Omit<TextProps, 'children'> = {
     type: 'semibold',
@@ -27,7 +29,7 @@ function Header() {
         <img
           src={PRIMARY_LOGO}
           className='mr-3 w-16 h-16 cursor-pointer'
-          alt='Artelier Maisa Logo'
+          alt={t('header.logo')}
         />
       </Navbar.Brand>
 
@@ -37,7 +39,7 @@ function Header() {
             color={isProducts ? 'white' : 'background-color'}
             {...commonTextProps}
           >
-            Produtos
+            <Translator path='header.productsPage' />
           </Text>
         </Navbar.Link>
 
@@ -54,7 +56,7 @@ function Header() {
             color={isAbout ? 'white' : 'background-color'}
             {...commonTextProps}
           >
-            Sobre a Maisa
+            <Translator path='header.aboutSection' />
           </Text>
         </Link>
 
@@ -71,7 +73,7 @@ function Header() {
               color={isEvents ? 'white' : 'background-color'}
               {...commonTextProps}
             >
-              Divulgações
+              <Translator path='header.eventsSection' />
             </Text>
           </Link>
         )}
@@ -82,7 +84,7 @@ function Header() {
         onClick={() => handleTo(null)}
       >
         <Text type='bold' color='white' size='xl' isCursorPointer>
-          Artelier by Maisa
+          <Translator path='header.artelierByMaisa' />
         </Text>
       </a>
     </Navbar>

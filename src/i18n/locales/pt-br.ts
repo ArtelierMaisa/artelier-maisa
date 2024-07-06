@@ -29,6 +29,14 @@ export const ptBr = {
       previous: 'Anterior',
     },
 
+    header: {
+      logo: 'Logo da Artelier Maisa',
+      productsPage: 'Produtos',
+      aboutSection: 'Sobre a Maisa',
+      eventsSection: 'Divulgações',
+      artelierByMaisa: 'Artelier by Maisa',
+    },
+
     metric: {
       material: 'Material',
       size: 'Tamanho',
