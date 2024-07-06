@@ -29,6 +29,12 @@ export const enUs = {
       previous: 'Previous',
     },
 
+    metric: {
+      material: 'Material',
+      size: 'Size',
+      weight: 'Weight',
+    },
+
     spinner: {
       loading: 'Loading...',
     },

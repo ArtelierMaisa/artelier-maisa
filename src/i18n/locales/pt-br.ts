@@ -29,6 +29,12 @@ export const ptBr = {
       previous: 'Anterior',
     },
 
+    metric: {
+      material: 'Material',
+      size: 'Tamanho',
+      weight: 'Peso',
+    },
+
     spinner: {
       loading: 'Carregando...',
     },
