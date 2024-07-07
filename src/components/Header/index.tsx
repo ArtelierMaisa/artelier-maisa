@@ -87,6 +87,7 @@ function Header() {
         <div className='flex mx-6 gap-1'>
           <button
             type='button'
+            title={t('header.portuguese')}
             className='w-10 h-5 overflow-hidden rounded hover:opacity-80 transition-opacity duration-300 focus:outline-none focus:ring focus:ring-primary focus:border-primary'
             onClick={async () => await handleChangeLanguage('pt-BR')}
           >
@@ -99,6 +100,7 @@ function Header() {
 
           <button
             type='button'
+            title={t('header.english')}
             className='w-10 h-5 overflow-hidden rounded hover:opacity-80 transition-opacity duration-300 focus:outline-none focus:ring focus:ring-primary focus:border-primary'
             onClick={async () => await handleChangeLanguage('en-US')}
           >

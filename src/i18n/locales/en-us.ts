@@ -54,7 +54,9 @@ export const enUs = {
       aboutSection: 'About the Maisa',
       eventsSection: 'Events',
       brazil: 'Brazil',
+      portuguese: 'Portuguese',
       unitedStates: 'United States',
+      english: 'English',
       artelierByMaisa: 'Artelier by Maisa',
     },
 

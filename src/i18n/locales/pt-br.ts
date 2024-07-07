@@ -54,7 +54,9 @@ export const ptBr = {
       aboutSection: 'Sobre a Maisa',
       eventsSection: 'Divulgações',
       brazil: 'Brasil',
+      portuguese: 'Português',
       unitedStates: 'Estados Unidos',
+      english: 'Inglês',
       artelierByMaisa: 'Artelier by Maisa',
     },
 
