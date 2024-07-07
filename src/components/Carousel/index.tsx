@@ -1,10 +1,11 @@
 import { Carousel as FlowbiteCarousel } from 'flowbite-react';
+import { memo } from 'react';
 
 import { CarouselProps } from '../../@types';
 import { carouselHeights } from '../../constants';
-import { CarouselButton } from '../CarouselButton';
+import { CarouselButton } from '../';
 
-export function Carousel(props: CarouselProps) {
+function Carousel(props: CarouselProps) {
   const {
     children,
     type = 'banner',
@@ -18,17 +19,30 @@ export function Carousel(props: CarouselProps) {
   const isBanner = type === 'banner';
   const slideInterval = isBanner ? 3000 : 5000;
 
+  const rightControl: React.JSX.Element = !hasChildren ? (
+    <span />
+  ) : (
+    <CarouselButton type='previous' />
+  );
+  const leftControl: React.JSX.Element = !hasChildren ? (
+    <span />
+  ) : (
+    <CarouselButton type='next' />
+  );
+
   return (
     <div className={`max-w-full ${carouselHeights[type]}`}>
       <FlowbiteCarousel
         slide={isSlide && !isProduct}
         slideInterval={slideInterval}
         indicators={showIndicators && isBanner && hasChildren}
-        rightControl={<CarouselButton type='previous' />}
-        leftControl={<CarouselButton type='next' />}
+        rightControl={rightControl}
+        leftControl={leftControl}
       >
         {children}
       </FlowbiteCarousel>
     </div>
   );
 }
+
+export default memo(Carousel);

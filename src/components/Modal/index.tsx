@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import ReactModal from 'react-modal';
 
 import { ModalProps } from '../../@types';
@@ -10,7 +11,7 @@ import {
   WhatsAppButton,
 } from '../';
 
-export function Modal(props: ModalProps) {
+function Modal(props: ModalProps) {
   const { isOpen, product, onClose } = props;
 
   const hasMetrics = !!product.size || !!product.weight || !!product.material;
@@ -36,7 +37,7 @@ export function Modal(props: ModalProps) {
         <Carousel type='product'>
           {product?.images &&
             product.images.map(image => (
-              <CarouselImage key={image.id} {...image} />
+              <CarouselImage key={image.id} name={image.name} uri={image.uri} />
             ))}
         </Carousel>
 
@@ -70,3 +71,5 @@ export function Modal(props: ModalProps) {
     </ReactModal>
   );
 }
+
+export default memo(Modal);

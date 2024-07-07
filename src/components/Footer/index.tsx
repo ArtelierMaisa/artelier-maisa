@@ -1,12 +1,16 @@
 import { Footer as FlowbiteFooter } from 'flowbite-react';
+import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import packageJson from '../../../package.json';
 import { IconProps } from '../../@types';
 import { DEFAULT_EMAIL } from '../../config';
-import { sendMessage } from '../../utils';
-import { Icon, Text } from '../';
+import { buildWhatsAppUrl } from '../../utils';
+import { Icon, Text, Translator } from '../';
 
-export function Footer() {
+function Footer() {
+  const { t } = useTranslation();
+
   const version = packageJson.version;
   const currentYear = new Date().getFullYear();
 
@@ -16,34 +20,39 @@ export function Footer() {
   };
 
   function onSendWhatsAppMessage(): void {
-    window.open(sendMessage({ type: 'footer' }));
+    window.open(buildWhatsAppUrl({ message: t('footer.whatsAppMessage') }));
   }
 
   return (
     <FlowbiteFooter container className='border-t border-primary'>
       <div className='flex flex-1 flex-wrap justify-center md:justify-start items-center pb-0 sm:pb-2 md:pb-0 gap-1'>
         <FlowbiteFooter.Copyright
-          by='Artelier by Maisa™.'
+          by={t('footer.copyright')}
           year={currentYear}
         />
 
         <div className='flex flex-col sm:flex-row items-center sm:items-center gap-1'>
-          <Text type='semibold'>Todos os Direitos Reservados.</Text>
+          <Text type='semibold'>
+            <Translator path='footer.direct' />
+          </Text>
 
-          <Text>Versão {version}.</Text>
+          <Text>
+            <Translator path='footer.version' /> {version}.
+          </Text>
         </div>
       </div>
 
       <div className='flex flex-1 flex-wrap gap-1 justify-center items-center md:justify-end'>
         <Text className='text-center sm:text-right'>
-          Projeto de extensão desenvolvido na{' '}
+          <Translator path='footer.project' />{' '}
           <span className='inline-flex justify-center items-center text-base text-text font-normal gap-1'>
             <a
-              className='cursor-pointer underline rounded focus:outline-none focus:ring focus:ring-text focus:border-text'
+              className='cursor-pointer uppercase underline rounded focus:outline-none focus:ring focus:ring-text focus:border-text'
               href='https://www.univali.br/'
               target='_blank'
+              title={t('footer.univali')}
             >
-              Univali
+              <Translator path='footer.institution' />
             </a>
 
             <Icon variant='heart' color='alert' size='x-small' />
@@ -55,6 +64,7 @@ export function Footer() {
             className='rounded focus:outline-none focus:ring focus:ring-facebook focus:border-facebook'
             href='https://www.facebook.com/artelier.maisa/'
             target='_blank'
+            title={t('footer.facebook')}
           >
             <Icon
               variant='facebook-logo'
@@ -67,6 +77,7 @@ export function Footer() {
             className='rounded focus:outline-none focus:ring focus:ring-text focus:border-text'
             href='https://www.instagram.com/arteliermaisa/'
             target='_blank'
+            title={t('footer.instagram')}
           >
             <Icon variant='instagram-logo' color='text' {...commonIconProps} />
           </a>
@@ -75,6 +86,7 @@ export function Footer() {
             type='button'
             className='rounded focus:outline-none focus:ring focus:ring-whatsapp focus:border-whatring-whatsapp'
             onClick={onSendWhatsAppMessage}
+            title={t('footer.whatsapp')}
           >
             <Icon
               variant='whatsapp-logo'
@@ -85,7 +97,8 @@ export function Footer() {
 
           <a
             className='rounded focus:outline-none focus:ring focus:ring-email focus:border-email'
-            href={`mailto:${DEFAULT_EMAIL}?subject=Tenho interesse nos seus produtos!&body=Olá, tudo bem? Espero que sim! Estava olhando o seu site e resolvi entrar em contato, tenho interesse em seus produtos.`}
+            href={`mailto:${DEFAULT_EMAIL}?subject=${t('footer.emailSubject')}&body=${t('footer.emailBody')}`}
+            title={t('footer.email')}
           >
             <Icon
               variant='envelope-simple'
@@ -98,3 +111,5 @@ export function Footer() {
     </FlowbiteFooter>
   );
 }
+
+export default memo(Footer);

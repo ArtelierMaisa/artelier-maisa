@@ -1,6 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { Category, Product, SearchInputCategoryProps } from '../../@types';
+import {
+  Category,
+  Product,
+  ProductProps,
+  SearchInputCategoryProps,
+} from '../../@types';
 import {
   Footer,
   Header,
@@ -10,6 +15,7 @@ import {
   SearchInput,
   Spinner,
   Text,
+  Translator,
 } from '../../components';
 import { useUser } from '../../hooks';
 
@@ -18,9 +24,7 @@ export function Products() {
 
   const [searchValue, setSearchValue] = useState<string>('');
   const [products, setProducts] = useState<Product[]>(productsFirebase);
-  const [productSelected, setProductSelected] = useState<Product>(
-    {} as Product,
-  );
+  const [productSelected, setProductSelected] = useState<Product | null>(null);
   const [categorySelected, setCategorySelected] = useState<Category | null>(
     null,
   );
@@ -34,10 +38,10 @@ export function Products() {
 
     const productsSelected = searchValue.trim()
       ? allProductsOfTheCategory.filter(product =>
-          searchValue
+          product.name
             .trim()
             .toLowerCase()
-            .includes(product.name.trim().toLowerCase()),
+            .includes(searchValue.trim().toLowerCase()),
         )
       : allProductsOfTheCategory;
 
@@ -48,13 +52,15 @@ export function Products() {
     category: SearchInputCategoryProps | null,
   ): void {
     if (!category) return setCategorySelected(null);
-    setCategorySelected(categories.find(({ id }) => id === category.id)!);
+
+    const foundCategory = categories.find(({ id }) => id === category.id);
+    if (!foundCategory) return setCategorySelected(null);
+    setCategorySelected(foundCategory);
   }
 
-  useEffect(() => {
-    if (productsFirebase.length) setProducts(productsFirebase);
-    else setProducts([]);
-  }, [productsFirebase]);
+  const productUsedByModal: ProductProps = productSelected
+    ? { ...productSelected, title: productSelected.name }
+    : ({} as ProductProps);
 
   useEffect(() => {
     if (!searchValue) handleSearchProducts();
@@ -82,7 +88,6 @@ export function Products() {
                 {products.map(product => (
                   <ProductCard
                     key={product.id}
-                    id={product.id}
                     image={product.images[0].uri}
                     name={product.name}
                     price={product.price}
@@ -94,7 +99,7 @@ export function Products() {
             ) : (
               <div className='flex flex-col flex-1 w-full h-full justify-center items-center m-auto p-12 gap-1'>
                 <Text type='medium' size='xl' color='primary' toCenter>
-                  Não há produtos disponíveis
+                  <Translator path='products.withoutProductsAvailable' />
                 </Text>
 
                 <Icon variant='smiley-sad' color='primary' size='medium' />
@@ -104,7 +109,7 @@ export function Products() {
         ) : (
           <div className='flex flex-col w-full h-full gap-2 justify-center items-center'>
             <Text color='primary' type='medium' toCenter>
-              Preparando nossos lindos produtos para você...
+              <Translator path='products.loading' />
             </Text>
 
             <Spinner />
@@ -115,9 +120,9 @@ export function Products() {
       </main>
 
       <Modal
-        isOpen={!!productSelected?.id}
-        onClose={() => setProductSelected({} as Product)}
-        product={{ ...productSelected, title: productSelected.name }}
+        isOpen={!!productSelected}
+        onClose={() => setProductSelected(null)}
+        product={productUsedByModal}
       />
     </>
   );

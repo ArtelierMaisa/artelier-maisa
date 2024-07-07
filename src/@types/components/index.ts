@@ -10,4 +10,5 @@ export * from './ProductCard';
 export * from './SearchInput';
 export * from './Spinner';
 export * from './Text';
+export * from './Translator';
 export * from './WhatsAppButton';

@@ -12,11 +12,12 @@ import {
   WhatsappLogo,
   X,
 } from '@phosphor-icons/react';
+import { memo } from 'react';
 
 import { IconProps } from '../../@types';
-import { iconColors, iconSizes } from '../../constants/components';
+import { iconColors, iconSizes } from '../../constants';
 
-export function Icon(props: IconProps) {
+function Icon(props: IconProps) {
   const {
     variant,
     color = 'background-color',
@@ -49,3 +50,5 @@ export function Icon(props: IconProps) {
 
   return icons[variant];
 }
+
+export default memo(Icon);

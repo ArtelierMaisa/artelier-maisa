@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Element } from 'react-scroll';
 
-import { Product } from '../../@types';
+import { Product, ProductProps } from '../../@types';
 import {
   Carousel,
   CarouselEvent,
@@ -14,18 +15,18 @@ import {
   ProductCard,
   Spinner,
   Text,
+  Translator,
 } from '../../components';
 import { useUser } from '../../hooks';
 
 export function LandingPage() {
-  const [productSelected, setProductSelected] = useState<Product>(
-    {} as Product,
-  );
+  const [productSelected, setProductSelected] = useState<Product | null>(null);
 
   const { about, highlights, banners, products, isLoaded } = useUser();
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
-  function navigateToProductPage(): void {
+  function navigateToProductsPage(): void {
     navigate('/products');
   }
 
@@ -33,6 +34,9 @@ export function LandingPage() {
   const firstThreeProducts = [firstProduct, secondProduct, threeProduct].filter(
     product => product,
   );
+  const productUsedByModal: ProductProps = productSelected
+    ? { ...productSelected, title: productSelected.name }
+    : ({} as ProductProps);
 
   return (
     <>
@@ -46,8 +50,8 @@ export function LandingPage() {
                 {banners.map(banner => (
                   <CarouselImage
                     key={banner.id}
-                    id={banner.id}
                     uri={banner.image.uri}
+                    name={banner.image.name}
                   />
                 ))}
               </Carousel>
@@ -59,7 +63,6 @@ export function LandingPage() {
                   {firstThreeProducts.map(product => (
                     <ProductCard
                       key={product.id}
-                      id={product.id}
                       image={product.images[0].uri}
                       name={product.name}
                       price={product.price}
@@ -70,9 +73,9 @@ export function LandingPage() {
                 </div>
 
                 <GenericButton
-                  title='Conheça Nossos Produtos'
+                  title={t('landingPage.ourProducts')}
                   variant='secondary'
-                  onClick={navigateToProductPage}
+                  onClick={navigateToProductsPage}
                 />
               </section>
             )}
@@ -95,14 +98,14 @@ export function LandingPage() {
             <Element name='about'>
               <section className='flex flex-col mt-3 mb-6 bg-transparent'>
                 <Text type='semibold' size='2xl' toCenter>
-                  Sobre a Maisa
+                  <Translator path='landingPage.aboutTitle' />
                 </Text>
 
                 <div className='flex flex-row flex-wrap justify-center items-center mt-8'>
                   <div className='flex flex-col w-full lg:w-1/3 justify-center items-center gap-4 lg:border-r-[1px] border-b-[1px] lg:border-b-0 border-r-primary border-b-primary px-8 pb-8 lg:pb-0 py-2'>
                     <img
                       src={about?.uri}
-                      alt={`Foto de ${about?.name}`}
+                      alt={about?.name}
                       className='w-60 h-60 rounded-full shadow-default object-cover'
                     />
 
@@ -129,7 +132,7 @@ export function LandingPage() {
         ) : (
           <div className='flex flex-col w-full h-full gap-2 justify-center items-center'>
             <Text color='primary' type='medium' toCenter>
-              Preparando algo especial para você...
+              <Translator path='landingPage.loading' />
             </Text>
 
             <Spinner />
@@ -140,9 +143,9 @@ export function LandingPage() {
       </main>
 
       <Modal
-        isOpen={!!productSelected?.id}
-        onClose={() => setProductSelected({} as Product)}
-        product={{ ...productSelected, title: productSelected.name }}
+        isOpen={!!productSelected}
+        onClose={() => setProductSelected(null)}
+        product={productUsedByModal}
       />
     </>
   );

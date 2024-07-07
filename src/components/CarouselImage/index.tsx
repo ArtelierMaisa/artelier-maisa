@@ -1,14 +1,17 @@
+import { memo } from 'react';
+
 import { CarouselImageProps } from '../../@types';
 
-export function CarouselImage(props: CarouselImageProps) {
-  const { id, uri } = props;
+function CarouselImage(props: CarouselImageProps) {
+  const { name, uri } = props;
 
   return (
     <img
-      key={id}
       src={uri}
-      alt='Imagem do Carousel'
+      alt={name}
       className='w-full h-full max-w-full rounded-none object-cover'
     />
   );
 }
+
+export default memo(CarouselImage);

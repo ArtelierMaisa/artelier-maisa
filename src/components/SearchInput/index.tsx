@@ -1,19 +1,29 @@
-import { useState } from 'react';
+import { FormEvent, memo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { SearchInputCategoryProps, SearchInputProps } from '../../@types';
-import { GenericButton, Icon, Text } from '../';
+import { GenericButton, Icon, Text, Translator } from '../';
 
-export function SearchInput(props: SearchInputProps) {
+function SearchInput(props: SearchInputProps) {
   const { categories, searchValue, onChange, onSelect, onSearch } = props;
 
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const [categorySelected, setCategorySelected] =
     useState<SearchInputCategoryProps | null>(null);
 
+  const { t } = useTranslation();
+
   function onSelectCategory(category: SearchInputCategoryProps | null): void {
     setCategorySelected(category);
+
     if (onSelect) onSelect(category);
     setShowDropdown(false);
+  }
+
+  function onSubmit(event: FormEvent<HTMLFormElement>): void {
+    event.preventDefault();
+
+    if (onSearch) onSearch();
   }
 
   const renderCategoryDropdown: React.JSX.Element = (
@@ -37,7 +47,9 @@ export function SearchInput(props: SearchInputProps) {
             className='inline-flex w-full justify-center sm:justify-start cursor-pointer px-4 py-2 hover:transition-opacity hover:duration-300 hover:opacity-80'
             onClick={() => onSelectCategory(null)}
           >
-            <Text color='background-color'>Sem Categoria</Text>
+            <Text color='background-color'>
+              <Translator path='searchInput.withoutCategory' />
+            </Text>
           </button>
         </li>
       </ul>
@@ -46,7 +58,10 @@ export function SearchInput(props: SearchInputProps) {
 
   return (
     <div className='flex flex-col w-full items-center gap-2'>
-      <form className='w-full max-w-[46rem] rounded-lg sm:rounded-none shadow-default'>
+      <form
+        onSubmit={onSubmit}
+        className='w-full max-w-[46rem] rounded-lg sm:rounded-none shadow-default'
+      >
         <div className='flex relative'>
           <button
             type='button'
@@ -54,7 +69,11 @@ export function SearchInput(props: SearchInputProps) {
             onClick={() => setShowDropdown(!showDropdown)}
           >
             <Text type='medium' color='background-color'>
-              {categorySelected ? categorySelected.name : 'Categorias'}
+              {categorySelected ? (
+                categorySelected.name
+              ) : (
+                <Translator path='searchInput.categoryLabel' />
+              )}
             </Text>
 
             <Icon variant='caret-down' color='background-color' />
@@ -69,9 +88,8 @@ export function SearchInput(props: SearchInputProps) {
               value={searchValue}
               type='search'
               className='block w-full h-16 z-20 p-4 sm:p-2 sm:pr-16 rounded-lg sm:rounded-none bg-background-color text-primary font-normal text-base border-none placeholder-primary60 focus:outline-none focus:ring-0 focus:border-none'
-              placeholder='Buscar Produto'
+              placeholder={t('searchInput.inputPlaceholder')}
               onChange={onChange}
-              required
             />
 
             <button
@@ -81,7 +99,9 @@ export function SearchInput(props: SearchInputProps) {
             >
               <Icon variant='magnifying-glass' color='background-color' />
 
-              <span className='sr-only'>Search</span>
+              <span className='sr-only'>
+                <Translator path='searchInput.buttonLabel' />
+              </span>
             </button>
           </div>
         </div>
@@ -89,15 +109,25 @@ export function SearchInput(props: SearchInputProps) {
 
       <div className='relative flex flex-col sm:hidden w-full gap-2'>
         <GenericButton
-          title={categorySelected ? categorySelected.name : 'Categorias'}
+          title={
+            categorySelected
+              ? categorySelected.name
+              : t('searchInput.categoryLabel')
+          }
           onClick={() => setShowDropdown(!showDropdown)}
           isHugWidth
         />
 
         {showDropdown && renderCategoryDropdown}
 
-        <GenericButton title='Buscar' onClick={onSearch} isHugWidth />
+        <GenericButton
+          title={t('searchInput.buttonTitle')}
+          onClick={onSearch}
+          isHugWidth
+        />
       </div>
     </div>
   );
 }
+
+export default memo(SearchInput);
