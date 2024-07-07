@@ -82,5 +82,11 @@ export const enUs = {
     spinner: {
       loading: 'Loading...',
     },
+
+    whatsAppButton: {
+      firstWhatsAppMessage: 'Hello, I am interested in the product "',
+      secondWhatsAppMessage: '" on your site, I would like to talk about him.',
+      buttonTitle: 'Contact via WhatsApp',
+    },
   },
 };

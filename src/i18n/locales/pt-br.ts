@@ -82,5 +82,12 @@ export const ptBr = {
     spinner: {
       loading: 'Carregando...',
     },
+
+    whatsAppButton: {
+      firstWhatsAppMessage: 'Olá, estou interresado(a) no produto "',
+      secondWhatsAppMessage:
+        '" que achei no seu site, gostaria de conversar sobre ele.',
+      buttonTitle: 'Entrar em Contanto via WhatsApp',
+    },
   },
 };
