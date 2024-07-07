@@ -2,14 +2,19 @@ import { memo } from 'react';
 
 import { WhatsAppButtonProps } from '../../@types';
 import { DEFAULT_PHONE } from '../../config';
-import { sendMessage } from '../../utils';
+import { buildWhatsAppUrl } from '../../utils';
 import { Icon, Text } from '../';
 
 function WhatsAppButton(props: WhatsAppButtonProps) {
   const { product, phone = DEFAULT_PHONE } = props;
 
   function onSendWhatsAppMessage(): void {
-    window.open(sendMessage({ phone, product }));
+    window.open(
+      buildWhatsAppUrl({
+        phone,
+        message: `Olá, estou interresado(a) no produto "${product}" que achei no seu site, gostaria de conversar sobre ele.`,
+      }),
+    );
   }
 
   return (

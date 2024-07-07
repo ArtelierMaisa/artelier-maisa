@@ -73,7 +73,7 @@ export function LandingPage() {
                 </div>
 
                 <GenericButton
-                  title={t('ourProducts')}
+                  title={t('landingPage.ourProducts')}
                   variant='secondary'
                   onClick={navigateToProductsPage}
                 />

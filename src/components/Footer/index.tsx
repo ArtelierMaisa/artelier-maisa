@@ -4,7 +4,7 @@ import { memo } from 'react';
 import packageJson from '../../../package.json';
 import { IconProps } from '../../@types';
 import { DEFAULT_EMAIL } from '../../config';
-import { sendMessage } from '../../utils';
+import { buildWhatsAppUrl } from '../../utils';
 import { Icon, Text } from '../';
 
 function Footer() {
@@ -17,7 +17,12 @@ function Footer() {
   };
 
   function onSendWhatsAppMessage(): void {
-    window.open(sendMessage({ type: 'footer' }));
+    window.open(
+      buildWhatsAppUrl({
+        message:
+          'Olá, estava olhando o seu site e resolvi entrar em contato. Tenho interesse em seus produtos!',
+      }),
+    );
   }
 
   return (
