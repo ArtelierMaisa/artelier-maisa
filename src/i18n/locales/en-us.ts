@@ -30,6 +30,24 @@ export const enUs = {
       previous: 'Previous',
     },
 
+    footer: {
+      whatsAppMessage:
+        'Hello, I was see your site and I have interest in your products. Can we talk about them?',
+      copyright: 'Artelier by Maisa™.',
+      direct: 'All the Directs Reserved.',
+      version: 'Version',
+      project: 'Extension project developed at',
+      institution: 'UNIVALI',
+      emailSubject: 'I have interest in your products!',
+      emailBody:
+        'Hello, how are you doing? I was see your site and I have interest in your products. Can we talk about them?',
+      univali: 'Univali',
+      facebook: 'Facebook',
+      instagram: 'Instagram',
+      whatsapp: 'WhatsApp',
+      email: 'Email',
+    },
+
     header: {
       logo: 'Artelier Maisa Logo',
       productsPage: 'Products',

@@ -30,6 +30,24 @@ export const ptBr = {
       previous: 'Anterior',
     },
 
+    footer: {
+      whatsAppMessage:
+        'Olá, estava olhando o seu site e resolvi entrar em contato. Tenho interesse em seus produtos!',
+      copyright: 'Artelier by Maisa™.',
+      direct: 'Todos os Direitos Reservados.',
+      version: 'Versão',
+      project: 'Projeto de extensão desenvolvido na',
+      institution: 'UNIVALI',
+      emailSubject: 'Tenho interesse nos seus produtos!',
+      emailBody:
+        'Olá, tudo bem? Espero que sim! Estava olhando o seu site e resolvi entrar em contato, tenho interesse em seus produtos.',
+      univali: 'Univali',
+      facebook: 'Facebook',
+      instagram: 'Instagram',
+      whatsapp: 'WhatsApp',
+      email: 'E-mail',
+    },
+
     header: {
       logo: 'Logo da Artelier Maisa',
       productsPage: 'Produtos',
