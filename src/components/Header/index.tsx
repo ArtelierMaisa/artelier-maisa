@@ -84,11 +84,11 @@ function Header() {
       </Navbar.Collapse>
 
       <div className='flex flex-1 justify-end items-center gap-1'>
-        <div className='flex mx-6 gap-1'>
+        <div className='flex ml-2 sm:mx-6 sm:ml-0 gap-1'>
           <button
             type='button'
             title={t('header.portuguese')}
-            className='w-10 h-5 overflow-hidden rounded hover:opacity-80 transition-opacity duration-300 focus:outline-none focus:ring focus:ring-primary focus:border-primary'
+            className='w-12 h-6 sm:w-10 sm:h-5 overflow-hidden rounded hover:opacity-80 transition-opacity duration-300 focus:outline-none focus:ring focus:ring-primary focus:border-primary'
             onClick={async () => await handleChangeLanguage('pt-BR')}
           >
             <img
@@ -101,7 +101,7 @@ function Header() {
           <button
             type='button'
             title={t('header.english')}
-            className='w-10 h-5 overflow-hidden rounded hover:opacity-80 transition-opacity duration-300 focus:outline-none focus:ring focus:ring-primary focus:border-primary'
+            className='w-12 h-6 sm:w-10 sm:h-5 overflow-hidden rounded hover:opacity-80 transition-opacity duration-300 focus:outline-none focus:ring focus:ring-primary focus:border-primary'
             onClick={async () => await handleChangeLanguage('en-US')}
           >
             <img
@@ -112,7 +112,7 @@ function Header() {
           </button>
         </div>
 
-        <a onClick={() => handleTo(null)}>
+        <a className='hidden sm:flex' onClick={() => handleTo(null)}>
           <Text type='bold' color='white' size='xl' isCursorPointer>
             <Translator path='header.artelierByMaisa' />
           </Text>
