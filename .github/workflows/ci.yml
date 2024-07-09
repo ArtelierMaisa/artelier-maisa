@@ -1,4 +1,4 @@
-name: GabrielMendes.com CI
+name: artelier.art.br CI
 on:
   push:
     branches:
