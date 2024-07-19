@@ -1,4 +1,5 @@
-name: artelier.art.br CI
+name: CI - Platform
+
 on:
   push:
     branches:
@@ -7,16 +8,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps: 
-      - name: Checkout do repositório
+    steps:
+      - name: Checkout repo
         uses: actions/checkout@v1
-      - name: Deploy para meu hosting
+      - name: Deploy to my hosting
         uses: easingthemes/ssh-deploy@main
-        env: 
+        env:
           SSH_PRIVATE_KEY: ${{secrets.SERVER_SSH_KEY}}
-          ARGS: "-rltgoDzvO --delete"
-          SOURCE: "src/"
-          REMOTE_HOST: ${{secrets.REMOTE_HOST}}	
+          ARGS: '-rltgoDzvO --delete'
+          SOURCE: 'src/'
+          REMOTE_HOST: ${{secrets.REMOTE_HOST}}
           REMOTE_USER: ${{secrets.REMOTE_USER}}
           REMOTE_PORT: ${{secrets.REMOTE_PORT}}
           TARGET: ${{secrets.REMOTE_TARGET}}
