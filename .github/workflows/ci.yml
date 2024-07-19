@@ -1,4 +1,5 @@
-name: artelier.art.br CI
+name: CI - Platform
+
 on:
   push:
     branches:
@@ -8,9 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps: 
-      - name: Checkout do repositório
+      - name: Checkout repo
         uses: actions/checkout@v1
-      - name: Deploy para meu hosting
+      - name: Deploy to my hosting
         uses: easingthemes/ssh-deploy@main
         env: 
           SSH_PRIVATE_KEY: ${{secrets.SERVER_SSH_KEY}}
