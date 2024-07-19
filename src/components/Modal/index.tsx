@@ -37,7 +37,13 @@ function Modal(props: ModalProps) {
         <Carousel type='product'>
           {product?.images &&
             product.images.map(image => (
-              <CarouselImage key={image.id} name={image.name} uri={image.uri} />
+              <CarouselImage
+                key={image.id}
+                name={image.name}
+                uri={image.uri}
+                className='p-2 lg:py-3'
+                isContained
+              />
             ))}
         </Carousel>
 

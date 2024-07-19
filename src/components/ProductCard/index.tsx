@@ -31,7 +31,7 @@ function ProductCard(props: ProductCardProps) {
         <Text toCenter>{description}</Text>
       </div>
 
-      <div className='flex flex-row w-full justify-between items-center'>
+      <div className='flex flex-row w-full justify-between items-center gap-2'>
         <GenericButton
           title={t('productCard.seeMore')}
           type='small'
