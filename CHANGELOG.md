@@ -1,36 +1,33 @@
 # [1.1.0](https://github.com/ArtelierMaisa/artelier-maisa/compare/v1.0.0...v1.1.0) (2024-07-07)
 
-
 ### Bug Fixes
 
-* add title to change language buttons ([8fb261d](https://github.com/ArtelierMaisa/artelier-maisa/commit/8fb261d79b6aed0270cad9127c793eefdbcf4a3f))
-
+- add title to change language buttons ([8fb261d](https://github.com/ArtelierMaisa/artelier-maisa/commit/8fb261d79b6aed0270cad9127c793eefdbcf4a3f))
 
 ### Features
 
-* add `meta` tags to show platform preview ([44d2084](https://github.com/ArtelierMaisa/artelier-maisa/commit/44d2084ae44fcef1542780893e53ff27ee682ad2))
-* add `name` to `CarouselImage` component to be used by `alt` img property ([0c39141](https://github.com/ArtelierMaisa/artelier-maisa/commit/0c391416ca106ae5b7be9e67bcebccaf2b61625e))
-* add internationalization label that's faulted to the `LandingPage` ([7d5406c](https://github.com/ArtelierMaisa/artelier-maisa/commit/7d5406cc47a24242c1f5258f4b181e8890c8621f))
-* add internationalization libraries and implementation ([5ecc7cf](https://github.com/ArtelierMaisa/artelier-maisa/commit/5ecc7cfde03a9ac3b78ca2c41bded166d9238664))
-* add internationalization to `CarouselButton` component ([37285b8](https://github.com/ArtelierMaisa/artelier-maisa/commit/37285b8f0ab7fa4816364cb6b9a87c04ad9364d2))
-* add internationalization to `Footer` component ([a56dee2](https://github.com/ArtelierMaisa/artelier-maisa/commit/a56dee22f8849d27fd1cf00b8742fcf82df6e1a5))
-* add internationalization to `Header` component ([84d5d31](https://github.com/ArtelierMaisa/artelier-maisa/commit/84d5d31cb95a329c12715ed543ae8c346ade5310))
-* add internationalization to `LandingPage` ([609cf67](https://github.com/ArtelierMaisa/artelier-maisa/commit/609cf67caa6bfdac6428b096d82abcf5045ba546))
-* add internationalization to `Metric` component and remove yours constants ([a118ad1](https://github.com/ArtelierMaisa/artelier-maisa/commit/a118ad111bb36e977af30feb7957ab1618a1a9e4))
-* add internationalization to `NotFound` page ([a25fc1d](https://github.com/ArtelierMaisa/artelier-maisa/commit/a25fc1d5815a40ceb7eaa7604ac4cb95f1afc305))
-* add internationalization to `ProductCard` component and change language in `Header` ([03b9f8d](https://github.com/ArtelierMaisa/artelier-maisa/commit/03b9f8d539fd64ee5f0491a5bdece3d7b4775dfe))
-* add internationalization to `Products` page ([378f5bb](https://github.com/ArtelierMaisa/artelier-maisa/commit/378f5bbade8f92089659edac0918120393cb038e))
-* add internationalization to `SearchInput` component ([7fb36fc](https://github.com/ArtelierMaisa/artelier-maisa/commit/7fb36fcebb9a389d4cc0f174696573e9e511b79d))
-* add internationalization to `Spinner` component ([9ac64a6](https://github.com/ArtelierMaisa/artelier-maisa/commit/9ac64a60048b387a7a940a3e794ecf8b314daacb))
-* add internationalization to `UserContext` toast ([d83c1ae](https://github.com/ArtelierMaisa/artelier-maisa/commit/d83c1ae24f82fb3a91b1659396b0b2702e90eab8))
-* add internationalization to `WhatsAppButton` component ([1710635](https://github.com/ArtelierMaisa/artelier-maisa/commit/17106359399c1c6f92853e095f3f69be5ef34acb))
-
+- add `meta` tags to show platform preview ([44d2084](https://github.com/ArtelierMaisa/artelier-maisa/commit/44d2084ae44fcef1542780893e53ff27ee682ad2))
+- add `name` to `CarouselImage` component to be used by `alt` img property ([0c39141](https://github.com/ArtelierMaisa/artelier-maisa/commit/0c391416ca106ae5b7be9e67bcebccaf2b61625e))
+- add internationalization label that's faulted to the `LandingPage` ([7d5406c](https://github.com/ArtelierMaisa/artelier-maisa/commit/7d5406cc47a24242c1f5258f4b181e8890c8621f))
+- add internationalization libraries and implementation ([5ecc7cf](https://github.com/ArtelierMaisa/artelier-maisa/commit/5ecc7cfde03a9ac3b78ca2c41bded166d9238664))
+- add internationalization to `CarouselButton` component ([37285b8](https://github.com/ArtelierMaisa/artelier-maisa/commit/37285b8f0ab7fa4816364cb6b9a87c04ad9364d2))
+- add internationalization to `Footer` component ([a56dee2](https://github.com/ArtelierMaisa/artelier-maisa/commit/a56dee22f8849d27fd1cf00b8742fcf82df6e1a5))
+- add internationalization to `Header` component ([84d5d31](https://github.com/ArtelierMaisa/artelier-maisa/commit/84d5d31cb95a329c12715ed543ae8c346ade5310))
+- add internationalization to `LandingPage` ([609cf67](https://github.com/ArtelierMaisa/artelier-maisa/commit/609cf67caa6bfdac6428b096d82abcf5045ba546))
+- add internationalization to `Metric` component and remove yours constants ([a118ad1](https://github.com/ArtelierMaisa/artelier-maisa/commit/a118ad111bb36e977af30feb7957ab1618a1a9e4))
+- add internationalization to `NotFound` page ([a25fc1d](https://github.com/ArtelierMaisa/artelier-maisa/commit/a25fc1d5815a40ceb7eaa7604ac4cb95f1afc305))
+- add internationalization to `ProductCard` component and change language in `Header` ([03b9f8d](https://github.com/ArtelierMaisa/artelier-maisa/commit/03b9f8d539fd64ee5f0491a5bdece3d7b4775dfe))
+- add internationalization to `Products` page ([378f5bb](https://github.com/ArtelierMaisa/artelier-maisa/commit/378f5bbade8f92089659edac0918120393cb038e))
+- add internationalization to `SearchInput` component ([7fb36fc](https://github.com/ArtelierMaisa/artelier-maisa/commit/7fb36fcebb9a389d4cc0f174696573e9e511b79d))
+- add internationalization to `Spinner` component ([9ac64a6](https://github.com/ArtelierMaisa/artelier-maisa/commit/9ac64a60048b387a7a940a3e794ecf8b314daacb))
+- add internationalization to `UserContext` toast ([d83c1ae](https://github.com/ArtelierMaisa/artelier-maisa/commit/d83c1ae24f82fb3a91b1659396b0b2702e90eab8))
+- add internationalization to `WhatsAppButton` component ([1710635](https://github.com/ArtelierMaisa/artelier-maisa/commit/17106359399c1c6f92853e095f3f69be5ef34acb))
 
 ### Performance Improvements
 
-* add change all `get` firebase function to `onValue` ([58b13d6](https://github.com/ArtelierMaisa/artelier-maisa/commit/58b13d6a0e94881c44eaae71d1da74696fe559c9))
-* change all components to use `memo` and avoid unnecessary renderings ([9b85436](https://github.com/ArtelierMaisa/artelier-maisa/commit/9b85436196d71ca061b944e9b4ee836361432cba))
-* improve search product by name in `handleSearchProducts` ([d1d461b](https://github.com/ArtelierMaisa/artelier-maisa/commit/d1d461b29155fe78dc7a6d148905dc958afc8b3f))
+- add change all `get` firebase function to `onValue` ([58b13d6](https://github.com/ArtelierMaisa/artelier-maisa/commit/58b13d6a0e94881c44eaae71d1da74696fe559c9))
+- change all components to use `memo` and avoid unnecessary renderings ([9b85436](https://github.com/ArtelierMaisa/artelier-maisa/commit/9b85436196d71ca061b944e9b4ee836361432cba))
+- improve search product by name in `handleSearchProducts` ([d1d461b](https://github.com/ArtelierMaisa/artelier-maisa/commit/d1d461b29155fe78dc7a6d148905dc958afc8b3f))
 
 # 1.0.0 (2024-07-03)
 

@@ -79,10 +79,7 @@ export function UserProvider({ children }: Required<PropsWithChildren>) {
     });
 
     const unsubscribeHighlights = onValue(highlightsRef, highlightsSnapshot => {
-      if (!highlightsSnapshot.exists()) {
-        setHighlights([]);
-        return handleGenericErrorToast();
-      }
+      if (!highlightsSnapshot.exists()) return setHighlights([]);
 
       const highlightsFirebase = mapper<Highlight[]>(highlightsSnapshot);
       if (!highlightsFirebase) return handleGenericErrorToast();
