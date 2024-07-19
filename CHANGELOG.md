@@ -1,3 +1,11 @@
+## [1.1.1](https://github.com/ArtelierMaisa/artelier-maisa/compare/v1.1.0...v1.1.1) (2024-07-19)
+
+
+### Bug Fixes
+
+* add `contain` to show images in `Carousel` of the `ProductCard` component and gap between button and price ([7f0edb1](https://github.com/ArtelierMaisa/artelier-maisa/commit/7f0edb16b0ee528dca86603ea6de4ba99a7672c0))
+* remove invalid error when highlights doesn't exists ([6d03d22](https://github.com/ArtelierMaisa/artelier-maisa/commit/6d03d22d246c99121610e0b3e0f22f50643dee97))
+
 # [1.1.0](https://github.com/ArtelierMaisa/artelier-maisa/compare/v1.0.0...v1.1.0) (2024-07-07)
 
 ### Bug Fixes
