@@ -2,19 +2,19 @@ import { memo } from 'react';
 import ReactModal from 'react-modal';
 
 import { ModalProps } from '../../@types';
-import {
-  Carousel,
-  CarouselImage,
-  Icon,
-  Metric,
-  Text,
-  WhatsAppButton,
-} from '../';
+import { buildWhatsAppUrl } from '../../utils';
+import { Carousel, CarouselImage, Icon } from '../';
 
 function Modal(props: ModalProps) {
   const { isOpen, product, onClose } = props;
 
-  const hasMetrics = !!product.size || !!product.weight || !!product.material;
+  function onSendWhatsAppMessage(): void {
+    window.open(
+      buildWhatsAppUrl({
+        message: `Olá, estou interresado(a) no produto "${product.title}" que achei no seu site, gostaria de conversar sobre ele.`,
+      }),
+    );
+  }
 
   return (
     <ReactModal
@@ -23,12 +23,12 @@ function Modal(props: ModalProps) {
       shouldCloseOnEsc
       ariaHideApp={false}
       overlayClassName='fixed inset-0 bg-text50 border-none z-30'
-      className='flex flex-col w-full h-full justify-center items-center py-8'
+      className='flex flex-col w-full h-full justify-center items-center px-4 py-8'
     >
-      <div className='relative flex flex-col w-full md:w-[40rem] lg:w-[48rem] lg:h-auto overflow-hidden rounded-2xl bg-background-color shadow-default scrollbar scrollbar-w-3 scrollbar-thumb-rounded-lg scrollbar-thumb-primary scrollbar-track-background-color overflow-y-auto'>
+      <div className='relative flex flex-col w-full md:w-[40rem] lg:w-[48rem] h-auto overflow-hidden p-2 lg:py-3 rounded-2xl bg-background-color shadow-default scrollbar scrollbar-w-3 scrollbar-thumb-rounded-lg scrollbar-thumb-primary scrollbar-track-background-color overflow-y-auto'>
         <button
           type='button'
-          className='absolute top-3 right-3 z-20 flex w-8 h-8 justify-center items-center bg-primary rounded-full shadow-default hover:opacity-60 transition-colors duration-300 focus:outline-none focus:ring focus:ring-background-color focus:border-bacring-background-color'
+          className='absolute top-3 right-3 z-20 flex size-10 justify-center items-center bg-primary rounded-full shadow-default hover:opacity-60 transition-colors duration-300 focus:outline-none focus:ring focus:ring-background-color focus:border-bacring-background-color'
           onClick={onClose}
         >
           <Icon variant='x' color='background-color' size='xx-small' />
@@ -41,38 +41,20 @@ function Modal(props: ModalProps) {
                 key={image.id}
                 name={image.name}
                 uri={image.uri}
-                className='p-2 lg:py-3'
+                className='!w-auto !max-w-none !rounded-lg shadow-default'
                 isContained
               />
             ))}
         </Carousel>
 
-        <div className='flex flex-col w-full h-auto items-center px-4 py-6 gap-2'>
-          <Text type='semibold' size='xl' toCenter>
-            {product.title}
-          </Text>
-
-          <Text toCenter>{product.description}</Text>
-
-          {hasMetrics && (
-            <div className='flex flex-row flex-wrap w-full justify-center my-4 gap-4'>
-              {product.size && <Metric variant='size' value={product.size} />}
-
-              {product.weight && (
-                <Metric variant='weight' value={product.weight} />
-              )}
-
-              {product.material && (
-                <Metric variant='material' value={product.material} />
-              )}
-            </div>
-          )}
-
-          <WhatsAppButton
-            product={product.title}
-            phone={product.whatsapp || undefined}
-          />
-        </div>
+        <button
+          type='button'
+          title='Entrar em contato via WhatsApp'
+          className='absolute bottom-3 right-3 z-20 flex size-10 justify-center items-center bg-whatsapp rounded-full cursor-pointer hover:opacity-90 transition-colors duration-300 focus:outline-none focus:ring focus:ring-whatsapp focus:border-whatsapp'
+          onClick={onSendWhatsAppMessage}
+        >
+          <Icon variant='whatsapp-logo' size='x-small' />
+        </button>
       </div>
     </ReactModal>
   );

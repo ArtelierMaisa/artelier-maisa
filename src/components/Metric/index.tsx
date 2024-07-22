@@ -8,8 +8,8 @@ function Metric(props: MetricProps) {
   const { value, variant = 'material' } = props;
 
   return (
-    <div className='flex w-auto h-12'>
-      <div className='flex w-auto h-full items-center shadow-default shadow-text rounded-lg'>
+    <div className='flex w-full h-10'>
+      <div className='flex w-full h-full items-center shadow-default shadow-text rounded-lg'>
         <div className='w-auto h-auto p-3 bg-primary rounded-tl-lg rounded-bl-lg'>
           <Text
             type='medium'
@@ -21,7 +21,7 @@ function Metric(props: MetricProps) {
           </Text>
         </div>
 
-        <div className='w-auto h-auto p-3 bg-background-color rounded-tr-lg rounded-br-lg'>
+        <div className='w-full h-auto p-3 bg-background-color rounded-tr-lg rounded-br-lg'>
           <Text
             type='semibold'
             color='primary'

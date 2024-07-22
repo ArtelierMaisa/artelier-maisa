@@ -12,7 +12,6 @@ import ProductCard from './ProductCard';
 import SearchInput from './SearchInput';
 import Spinner from './Spinner';
 import Text from './Text';
-import WhatsAppButton from './WhatsAppButton';
 
 export {
   Carousel,
@@ -29,5 +28,4 @@ export {
   SearchInput,
   Spinner,
   Text,
-  WhatsAppButton,
 };

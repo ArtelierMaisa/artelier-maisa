@@ -7,12 +7,7 @@ export interface ProductImageProps {
 export interface ProductProps {
   id: string;
   title: string;
-  description: string;
   images: ProductImageProps[];
-  price: string;
-  material: string | null;
-  size: string | null;
-  weight: string | null;
   whatsapp: string | null;
 }
 

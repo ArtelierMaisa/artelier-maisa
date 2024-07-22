@@ -2,10 +2,22 @@ import { Card } from 'flowbite-react';
 import { memo } from 'react';
 
 import { ProductCardProps } from '../../@types';
-import { GenericButton, Text } from '../';
+import { buildWhatsAppUrl } from '../../utils';
+import { GenericButton, Icon, Metric, Text } from '../';
 
 function ProductCard(props: ProductCardProps) {
-  const { name, description, price, image, onSeeMore } = props;
+  const { name, description, price, material, size, weight, image, onSeeMore } =
+    props;
+
+  const hasMetrics = !!size || !!weight || !!material;
+
+  function onSendWhatsAppMessage(): void {
+    window.open(
+      buildWhatsAppUrl({
+        message: `Olá, estou interresado(a) no produto "${name}" que achei no seu site, gostaria de conversar sobre ele.`,
+      }),
+    );
+  }
 
   const renderImage: React.JSX.Element = (
     <img
@@ -17,7 +29,7 @@ function ProductCard(props: ProductCardProps) {
 
   return (
     <Card
-      className='max-w-[25rem] max-h-[33.75rem] bg-background-color shadow-default'
+      className='w-full max-w-[25rem] h-auto min-h-[33.75rem] bg-background-color shadow-default'
       renderImage={() => renderImage}
     >
       <Text type='semibold' size='xl' toCenter>
@@ -28,15 +40,42 @@ function ProductCard(props: ProductCardProps) {
         <Text toCenter>{description}</Text>
       </div>
 
-      <div className='flex flex-row w-full justify-between items-center gap-2'>
-        <GenericButton title='Ver mais' type='small' onClick={onSeeMore} />
+      {hasMetrics && (
+        <div className='flex flex-col w-full justify-center my-4 gap-5'>
+          {size && <Metric variant='size' value={size} />}
 
-        <Text type='medium' className='text-base sm:text-xl'>
-          Por{' '}
-          <span className='inline text-text font-bold sm:text-semibold text-base sm:text-xl'>
-            {price}
-          </span>
-        </Text>
+          {weight && <Metric variant='weight' value={weight} />}
+
+          {material && <Metric variant='material' value={material} />}
+        </div>
+      )}
+
+      <Text
+        type='medium'
+        className='w-full mb-2 text-base sm:text-xl text-right'
+      >
+        Por{' '}
+        <span className='inline text-text font-bold sm:text-semibold text-base sm:text-xl'>
+          {price}
+        </span>
+      </Text>
+
+      <div className='flex flex-row w-full justify-between items-center gap-2'>
+        <GenericButton
+          title='Ver mais'
+          type='small'
+          isHugWidth
+          onClick={onSeeMore}
+        />
+
+        <button
+          type='button'
+          title='Entrar em contato via WhatsApp'
+          className='flex justify-center items-center p-2.5 bg-whatsapp rounded-full cursor-pointer hover:opacity-90 transition-colors duration-300 focus:outline-none focus:ring focus:ring-whatsapp focus:border-whatsapp'
+          onClick={onSendWhatsAppMessage}
+        >
+          <Icon variant='whatsapp-logo' size='small' />
+        </button>
       </div>
     </Card>
   );

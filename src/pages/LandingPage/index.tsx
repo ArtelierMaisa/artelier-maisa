@@ -64,6 +64,9 @@ export function LandingPage() {
                       name={product.name}
                       price={product.price}
                       description={product.description}
+                      material={product.material}
+                      size={product.size}
+                      weight={product.weight}
                       onSeeMore={() => setProductSelected(product)}
                     />
                   ))}
