@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/ArtelierMaisa/artelier-maisa/compare/v1.1.1...v1.1.2) (2024-07-22)
+
+
+### Bug Fixes
+
+* remove internationalization ([02e18a4](https://github.com/ArtelierMaisa/artelier-maisa/commit/02e18a46f09e1b3fec3475e2e0929a9a8f2d8c11))
+
 ## [1.1.1](https://github.com/ArtelierMaisa/artelier-maisa/compare/v1.1.0...v1.1.1) (2024-07-19)
 
 ### Bug Fixes
