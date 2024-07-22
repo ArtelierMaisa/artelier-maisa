@@ -1,4 +1,3 @@
-import './i18n';
 import './index.css';
 import './services/firebase.ts';
 

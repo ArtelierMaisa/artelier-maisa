@@ -1,14 +1,11 @@
 import { Card } from 'flowbite-react';
 import { memo } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { ProductCardProps } from '../../@types';
-import { GenericButton, Text, Translator } from '../';
+import { GenericButton, Text } from '../';
 
 function ProductCard(props: ProductCardProps) {
   const { name, description, price, image, onSeeMore } = props;
-
-  const { t } = useTranslation();
 
   const renderImage: React.JSX.Element = (
     <img
@@ -32,14 +29,10 @@ function ProductCard(props: ProductCardProps) {
       </div>
 
       <div className='flex flex-row w-full justify-between items-center gap-2'>
-        <GenericButton
-          title={t('productCard.seeMore')}
-          type='small'
-          onClick={onSeeMore}
-        />
+        <GenericButton title='Ver mais' type='small' onClick={onSeeMore} />
 
         <Text type='medium' className='text-base sm:text-xl'>
-          <Translator path='productCard.by' />{' '}
+          Por{' '}
           <span className='inline text-text font-bold sm:text-semibold text-base sm:text-xl'>
             {price}
           </span>

@@ -1,19 +1,11 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 
 import { MetricProps } from '../../@types';
-import { Text, Translator } from '../';
+import { metricsVariants } from '../../constants';
+import { Text } from '../';
 
 function Metric(props: MetricProps) {
   const { value, variant = 'material' } = props;
-
-  const metricsVariants: Record<
-    Required<MetricProps>['variant'],
-    React.JSX.Element
-  > = {
-    material: <Translator path='metric.material' />,
-    size: <Translator path='metric.size' />,
-    weight: <Translator path='metric.weight' />,
-  };
 
   return (
     <div className='flex w-auto h-12'>
