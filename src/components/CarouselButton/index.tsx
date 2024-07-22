@@ -5,7 +5,7 @@ import {
   CarouselButtonType,
   IconProps,
 } from '../../@types';
-import { Icon, Translator } from '../';
+import { Icon } from '../';
 
 function CarouselButton(props: CarouselButtonProps) {
   const { type } = props;
@@ -27,11 +27,7 @@ function CarouselButton(props: CarouselButtonProps) {
       <span className='inline-flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-primary group-hover:bg-primary60 group-focus:outline-none'>
         {icons[type]}
 
-        <span className='sr-only'>
-          <Translator
-            path={isNext ? 'carouselButton.next' : 'carouselButton.previous'}
-          />
-        </span>
+        <span className='sr-only'>{isNext ? 'Próximo' : 'Anterior'}</span>
       </span>
     </>
   );

@@ -1,21 +1,15 @@
 import { Navbar } from 'flowbite-react';
 import { memo } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Link } from 'react-scroll';
 
-import { LanguageType, TextProps } from '../../@types';
-import { BRAZIL, PRIMARY_LOGO, UNITED_STATES } from '../../config';
+import { TextProps } from '../../@types';
+import { PRIMARY_LOGO } from '../../config';
 import { useScrollTop, useUser } from '../../hooks';
-import { Text, Translator } from '../';
+import { Text } from '../';
 
 function Header() {
   const { highlights } = useUser();
   const { handleTo, to } = useScrollTop();
-  const { i18n, t } = useTranslation();
-
-  async function handleChangeLanguage(language: LanguageType): Promise<void> {
-    await i18n.changeLanguage(language);
-  }
 
   const commonTextProps: Omit<TextProps, 'children'> = {
     type: 'semibold',
@@ -33,7 +27,7 @@ function Header() {
         <img
           src={PRIMARY_LOGO}
           className='mr-3 w-16 h-16 cursor-pointer'
-          alt={t('header.logo')}
+          alt='Logo da Artelier Maisa'
         />
       </Navbar.Brand>
 
@@ -43,7 +37,7 @@ function Header() {
             color={isProducts ? 'white' : 'background-color'}
             {...commonTextProps}
           >
-            <Translator path='header.productsPage' />
+            Produtos
           </Text>
         </Navbar.Link>
 
@@ -60,7 +54,7 @@ function Header() {
             color={isAbout ? 'white' : 'background-color'}
             {...commonTextProps}
           >
-            <Translator path='header.aboutSection' />
+            Sobre a Maisa
           </Text>
         </Link>
 
@@ -77,44 +71,16 @@ function Header() {
               color={isEvents ? 'white' : 'background-color'}
               {...commonTextProps}
             >
-              <Translator path='header.eventsSection' />
+              Divulgações
             </Text>
           </Link>
         )}
       </Navbar.Collapse>
 
-      <div className='flex flex-1 justify-end items-center gap-1'>
-        <div className='flex ml-2 sm:mx-6 sm:ml-0 gap-1'>
-          <button
-            type='button'
-            title={t('header.portuguese')}
-            className='w-12 h-6 sm:w-10 sm:h-5 overflow-hidden rounded hover:opacity-80 transition-opacity duration-300 focus:outline-none focus:ring focus:ring-primary focus:border-primary'
-            onClick={async () => await handleChangeLanguage('pt-BR')}
-          >
-            <img
-              src={BRAZIL}
-              alt={t('header.brazil')}
-              className='w-full h-full object-contain'
-            />
-          </button>
-
-          <button
-            type='button'
-            title={t('header.english')}
-            className='w-12 h-6 sm:w-10 sm:h-5 overflow-hidden rounded hover:opacity-80 transition-opacity duration-300 focus:outline-none focus:ring focus:ring-primary focus:border-primary'
-            onClick={async () => await handleChangeLanguage('en-US')}
-          >
-            <img
-              src={UNITED_STATES}
-              alt={t('header.unitedStates')}
-              className='w-full h-full object-contain'
-            />
-          </button>
-        </div>
-
-        <a className='hidden sm:flex' onClick={() => handleTo(null)}>
+      <div className='flex flex-1 justify-end items-center'>
+        <a onClick={() => handleTo(null)}>
           <Text type='bold' color='white' size='xl' isCursorPointer>
-            <Translator path='header.artelierByMaisa' />
+            Artelier by Maisa
           </Text>
         </a>
       </div>

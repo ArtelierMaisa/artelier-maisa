@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Element } from 'react-scroll';
 
@@ -15,7 +14,6 @@ import {
   ProductCard,
   Spinner,
   Text,
-  Translator,
 } from '../../components';
 import { useUser } from '../../hooks';
 
@@ -23,7 +21,6 @@ export function LandingPage() {
   const [productSelected, setProductSelected] = useState<Product | null>(null);
 
   const { about, highlights, banners, products, isLoaded } = useUser();
-  const { t } = useTranslation();
   const navigate = useNavigate();
 
   function navigateToProductsPage(): void {
@@ -73,7 +70,7 @@ export function LandingPage() {
                 </div>
 
                 <GenericButton
-                  title={t('landingPage.ourProducts')}
+                  title='Conheça Nossos Produtos'
                   variant='secondary'
                   onClick={navigateToProductsPage}
                 />
@@ -98,7 +95,7 @@ export function LandingPage() {
             <Element name='about'>
               <section className='flex flex-col mt-3 mb-6 bg-transparent'>
                 <Text type='semibold' size='2xl' toCenter>
-                  <Translator path='landingPage.aboutTitle' />
+                  Sobre a Maisa
                 </Text>
 
                 <div className='flex flex-row flex-wrap justify-center items-center mt-8'>
@@ -132,7 +129,7 @@ export function LandingPage() {
         ) : (
           <div className='flex flex-col w-full h-full gap-2 justify-center items-center'>
             <Text color='primary' type='medium' toCenter>
-              <Translator path='landingPage.loading' />
+              Preparando algo especial para você...
             </Text>
 
             <Spinner />
