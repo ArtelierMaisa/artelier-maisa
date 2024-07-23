@@ -69,3 +69,16 @@ textarea {
     background-color: var(--primary60);
   }
 }
+
+[data-rmiz-modal-content] {
+  background-color: var(--background-color);
+}
+
+[data-rmiz] {
+  display: flex;
+
+  width: 100%;
+  height: 100%;
+
+  justify-content: center;
+}

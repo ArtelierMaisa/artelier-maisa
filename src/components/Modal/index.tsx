@@ -1,9 +1,10 @@
 import { memo } from 'react';
+import Zoom from 'react-medium-image-zoom';
 import ReactModal from 'react-modal';
 
 import { ModalProps } from '../../@types';
 import { buildWhatsAppUrl } from '../../utils';
-import { Carousel, CarouselImage, Icon } from '../';
+import { Carousel, CarouselImage, Icon, Text } from '../';
 
 function Modal(props: ModalProps) {
   const { isOpen, product, onClose } = props;
@@ -25,7 +26,7 @@ function Modal(props: ModalProps) {
       overlayClassName='fixed inset-0 bg-text50 border-none z-30'
       className='flex flex-col w-full h-full justify-center items-center px-4 py-8'
     >
-      <div className='relative flex flex-col w-full md:w-[40rem] lg:w-[48rem] h-auto overflow-hidden p-2 lg:py-3 rounded-2xl bg-background-color shadow-default scrollbar scrollbar-w-3 scrollbar-thumb-rounded-lg scrollbar-thumb-primary scrollbar-track-background-color overflow-y-auto'>
+      <div className='relative flex flex-col w-full md:w-[40rem] lg:w-[48rem] h-auto overflow-hidden p-2 lg:py-3 gap-2 lg:gap-4 rounded-2xl bg-background-color shadow-default scrollbar scrollbar-w-3 scrollbar-thumb-rounded-lg scrollbar-thumb-primary scrollbar-track-background-color overflow-y-auto'>
         <button
           type='button'
           className='absolute top-3 right-3 z-20 flex size-10 justify-center items-center bg-primary rounded-full shadow-default hover:opacity-60 transition-colors duration-300 focus:outline-none focus:ring focus:ring-background-color focus:border-bacring-background-color'
@@ -37,15 +38,20 @@ function Modal(props: ModalProps) {
         <Carousel type='product'>
           {product?.images &&
             product.images.map(image => (
-              <CarouselImage
-                key={image.id}
-                name={image.name}
-                uri={image.uri}
-                className='!w-auto !max-w-none !rounded-lg shadow-default'
-                isContained
-              />
+              <Zoom key={image.id}>
+                <CarouselImage
+                  name={image.name}
+                  uri={image.uri}
+                  className='!w-auto !rounded-lg shadow-default'
+                  isContained
+                />
+              </Zoom>
             ))}
         </Carousel>
+
+        <Text type='medium' color='primary' toCenter>
+          Clique na imagem para aproximá-la em tela
+        </Text>
 
         <button
           type='button'

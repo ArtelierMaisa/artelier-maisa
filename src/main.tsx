@@ -1,4 +1,5 @@
 import './index.css';
+import 'react-medium-image-zoom/dist/styles.css';
 import './services/firebase.ts';
 
 import React from 'react';
