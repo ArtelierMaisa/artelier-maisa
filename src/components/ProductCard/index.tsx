@@ -9,8 +9,6 @@ function ProductCard(props: ProductCardProps) {
   const { name, description, price, material, size, weight, image, onSeeMore } =
     props;
 
-  const hasMetrics = !!size || !!weight || !!material;
-
   function onSendWhatsAppMessage(): void {
     window.open(
       buildWhatsAppUrl({
@@ -40,15 +38,13 @@ function ProductCard(props: ProductCardProps) {
         <Text toCenter>{description}</Text>
       </div>
 
-      {hasMetrics && (
-        <div className='flex flex-col w-full justify-center my-4 gap-5'>
-          {size && <Metric variant='size' value={size} />}
+      <div className='flex flex-col w-full justify-center my-4 gap-5'>
+        <Metric variant='size' value={size} />
 
-          {weight && <Metric variant='weight' value={weight} />}
+        <Metric variant='weight' value={weight} />
 
-          {material && <Metric variant='material' value={material} />}
-        </div>
-      )}
+        <Metric variant='material' value={material} />
+      </div>
 
       <Text
         type='medium'

@@ -28,7 +28,7 @@ function Metric(props: MetricProps) {
             className='text-base md:text-xl'
             toCenter
           >
-            {value}
+            {value || 'Não informado'}
           </Text>
         </div>
       </div>
