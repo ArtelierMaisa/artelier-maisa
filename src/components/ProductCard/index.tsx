@@ -2,7 +2,7 @@ import { Card } from 'flowbite-react';
 import { memo } from 'react';
 
 import { ProductCardProps } from '../../@types';
-import { buildWhatsAppUrl } from '../../utils';
+import { buildWhatsAppUrl, formatCurrency } from '../../utils';
 import { GenericButton, Icon, Metric, Text } from '../';
 
 function ProductCard(props: ProductCardProps) {
@@ -16,6 +16,8 @@ function ProductCard(props: ProductCardProps) {
       }),
     );
   }
+
+  const priceFormatted = formatCurrency(price);
 
   const renderImage: React.JSX.Element = (
     <img
@@ -52,7 +54,7 @@ function ProductCard(props: ProductCardProps) {
       >
         Por{' '}
         <span className='inline text-text font-bold sm:text-semibold text-base sm:text-xl'>
-          {price}
+          {priceFormatted}
         </span>
       </Text>
 
